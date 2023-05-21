@@ -1,2 +1,4 @@
 # Vueling-University
-Ejercicios y prácticas
+Ejercicios, prácticas y exámenes.
+
+by Raul Fabra Herrero
