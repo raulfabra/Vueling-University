@@ -1,0 +1,8 @@
+C:\Users\Holacons\source\repos\QA_Automated_Lab\TestVisualStudio\Test2\bin\Debug\Test2.exe.config
+C:\Users\Holacons\source\repos\QA_Automated_Lab\TestVisualStudio\Test2\bin\Debug\Test2.exe
+C:\Users\Holacons\source\repos\QA_Automated_Lab\TestVisualStudio\Test2\bin\Debug\Test2.pdb
+C:\Users\Holacons\source\repos\QA_Automated_Lab\TestVisualStudio\Test2\obj\Debug\Test2.csproj.AssemblyReference.cache
+C:\Users\Holacons\source\repos\QA_Automated_Lab\TestVisualStudio\Test2\obj\Debug\Test2.csproj.SuggestedBindingRedirects.cache
+C:\Users\Holacons\source\repos\QA_Automated_Lab\TestVisualStudio\Test2\obj\Debug\Test2.csproj.CoreCompileInputs.cache
+C:\Users\Holacons\source\repos\QA_Automated_Lab\TestVisualStudio\Test2\obj\Debug\Test2.exe
+C:\Users\Holacons\source\repos\QA_Automated_Lab\TestVisualStudio\Test2\obj\Debug\Test2.pdb
