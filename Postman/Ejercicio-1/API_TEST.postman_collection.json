@@ -61,7 +61,9 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"validateOK200(pm)"
+									"validateOK200(pm)\r",
+									"validateAllPokemons(\"bulbasaur\");\r",
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -132,14 +134,20 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
+							"validateAllPokemons = function (name){",
+							"    pm.test(\"Comprobar pokemon\", function() {",
+							"    //código para la prueba",
+							"    var data = pm.response.json()",
+							"    var pokemons = data.results",
+							"    var pokeFound;",
 							"",
-							"validateName = function (pm){",
+							"    pokemons.forEach(pokemon => { ",
+							"        if(pokemon.name == name) return pokeFound = pokemon.name ",
+							"    })",
 							"",
-							"    let dataJson = pm.response.Json()",
-							"    console.log(dataJson)",
+							"    pm.expect(pokeFound).to.equal(name)",
 							"",
-							"    pm.expect(dataJson).to.be.a('bulbasaur')",
-							"}"
+							"});}"
 						]
 					}
 				}
