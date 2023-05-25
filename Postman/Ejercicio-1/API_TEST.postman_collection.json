@@ -1,0 +1,205 @@
+{
+	"info": {
+		"_postman_id": "23def9b6-e032-45e4-b641-61c1cefbdfe0",
+		"name": "API_TEST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27562639"
+	},
+	"item": [
+		{
+			"name": "Peticiones_Get",
+			"item": [
+				{
+					"name": "Get-OnePokemon",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"validateOK200(pm);\r",
+									"\r",
+									"validateName = function (pm){\r",
+									"    var data = JSON.parse(responseBody);\r",
+									"\r",
+									"    let dataJson = data.forms[0].name;\r",
+									"\r",
+									"    pm.test( dataJson === \"bulbasaur\");\r",
+									"}\r",
+									"\r",
+									"validateName(pm)\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}{{endpoint}}{{name}}",
+							"host": [
+								"{{url_base}}{{endpoint}}{{name}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-PokemonAll",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"validateOK200(pm)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}{{endpoint}}",
+							"host": [
+								"{{url_base}}{{endpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-Users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"validateOK200(pm)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}{{endpoint}}",
+							"host": [
+								"{{url_base}}{{endpoint}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"validateName = function (pm){",
+							"",
+							"    let dataJson = pm.response.Json()",
+							"    console.log(dataJson)",
+							"",
+							"    pm.expect(dataJson).to.be.a('bulbasaur')",
+							"}"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Peticiones-Post",
+			"item": [
+				{
+					"name": "POST-Users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"validateOK201(pm)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 3000,\r\n    \"name\": \"vuelingMon\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url_base}}{{endpoint}}",
+							"host": [
+								"{{url_base}}{{endpoint}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"validateOK201 = function (pm) { pm.test(\"Status code is 201\", function () { pm.response.to.have.status(201); }); }",
+					"",
+					"validateOK200 = function (pm) { pm.test(\"Status code is 200\", function () { pm.response.to.have.status(200); }); }"
+				]
+			}
+		}
+	]
+}
