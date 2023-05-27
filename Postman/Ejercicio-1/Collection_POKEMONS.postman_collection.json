@@ -1,0 +1,320 @@
+{
+	"info": {
+		"_postman_id": "23def9b6-e032-45e4-b641-61c1cefbdfe0",
+		"name": "Collection_POKEMONS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27562639"
+	},
+	"item": [
+		{
+			"name": "Protocolo GET",
+			"item": [
+				{
+					"name": "getAllPokemons",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test para validar status 200\", validateOK200(pm))\r",
+									"\r",
+									"pm.test(\"Test para validar lista de pokemons\", validate_allPokemons(pm.response, pm.variables.get(\"name_pokemon\")))"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"validate_allPokemons = function (data, name){\r",
+									"    var dataJson = data.json()\r",
+									"    var pokemons = dataJson.results\r",
+									"    \r",
+									"    pokemons.forEach(pokemon => { \r",
+									"        if(pokemon.name == name) return pokeFound = pokemon.name \r",
+									"    })\r",
+									"\r",
+									"    pm.expect(pokeFound).to.equal(name)\r",
+									"\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}/pokemon",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"pokemon"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPokemon",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"validate_pokemon = function (data, name){\r",
+									"    var dataJson = data.json();\r",
+									"    pm.expect(dataJson.name).to.equal(name)\r",
+									"}\r",
+									"\r",
+									"validate_abilities = function (data){\r",
+									"    var dataJson = data.json();\r",
+									"    var habilidadesEsperadas = [\"overgrow\", \"chlorophyll\"];\r",
+									"    \r",
+									"    pm.expect(habilidadesEsperadas).to.include(dataJson.abilities[0].ability.name);\r",
+									"}\r",
+									"\r",
+									"validate_moviments = function (data, name){\r",
+									"    var movimientos = data.json().moves\r",
+									"    \r",
+									"    if (movimientos.length > 60) pm.test(\"Test para validar que los movimientos son mayor a 60\", pm.expect(movimientos.length).to.greaterThan(60));\r",
+									"    if (movimientos.length < 60) pm.test(\"Test para validar que los movimientos son menores a 60\", pm.expect(movimientos.length).to.lessThan(60));\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test para validar status 200\", validateOK200(pm));\r",
+									"\r",
+									"pm.test(\"Test para validar el Pokemon recibido\", validate_pokemon(pm.response, pm.variables.get(\"name_pokemon\")))\r",
+									"\r",
+									"pm.test(\"Test para validar las habilidades del Pokemon\", validate_abilities(pm.response, pm.variables.get(\"name_pokemon\")))\r",
+									"\r",
+									"validate_moviments(pm.response, pm.variables.get(\"name_pokemon\"))\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}/pokemon/{{name_pokemon}}",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"pokemon",
+								"{{name_pokemon}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPokemonByType",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"validate_type = function(data){\r",
+									"    var type = \"ice\"\r",
+									"    var dataJson = data.json()\r",
+									"    pm.expect(dataJson.type.name).to.equal(type)\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test para validar el status 200\", validateOK200(pm))\r",
+									"\r",
+									"pm.test(\"Test para validar el tipo de Pokemon\", validate_type(pm.response))"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}/move/ice-punch",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"move",
+								"ice-punch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPokemonMostFast - Mission imposible",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"validate_mostFast = function(data){\r",
+									"    var dataJson = data.json()\r",
+									"    console.log(dataJson)\r",
+									"    \r",
+									"    dataJson.stats.forEach(stat => {\r",
+									"        console.log(stat)\r",
+									"        \r",
+									"    })\r",
+									"    /* pm.response.stats[5].base_stat */\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test para validar el status 200\", validateOK200(pm))\r",
+									"\r",
+									"pm.test(\"Test para validar pokemon con mas Speed\", validate_mostFast(pm.response))"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}/pokemon/1",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"pokemon",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getNumOfPokesByType",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const _id = Math.floor((Math.random() * 20) + 1);\r",
+									"pm.collectionVariables.set(\"_id\", _id);\r",
+									"\r",
+									"validate_numOfPokes = function (data){\r",
+									"    var dataJson = data.json()\r",
+									"    \r",
+									"    pm.expect(dataJson.pokemon.length).greaterThan(50)\r",
+									"    if (dataJson.pokemon.length < 50) throw Error (\"This type has less than 50 Pokemons\")\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test para validar que hay mas de 50 pokemons en este tipo\", \r",
+									"        validate_numOfPokes(pm.response))"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}/type/{{_id}}",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"type",
+								"{{_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"validateOK201 = function (pm) { pm.test(\"Status code is 201\", function (pm) { pm.response.to.have.status(201); });}",
+					"",
+					"validateOK200 =  function (pm) { pm.response.to.have.status(200); }"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "name_pokemon",
+			"value": "bulbasaur",
+			"type": "string"
+		},
+		{
+			"key": "_id",
+			"value": ""
+		}
+	]
+}
