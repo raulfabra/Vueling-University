@@ -1,0 +1,318 @@
+{
+	"info": {
+		"_postman_id": "4b7945b4-927a-4ee6-a629-2e0ea5b713a2",
+		"name": "Collection_Marvel",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27562639"
+	},
+	"item": [
+		{
+			"name": "Get All Series",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"validate_seriesMarvel = function(data){\r",
+							"    dataJson = data.json().data.results\r",
+							"    const resEsperado = dataJson.filter((item) => typeof item.title == \"string\");\r",
+							"    pm.expect(resEsperado).to.eql(dataJson)\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"getAuthentication(pm)\r",
+							"\r",
+							"pm.test(\"Test para validar el status 200\", validateOK200(pm))\r",
+							"\r",
+							"pm.test(\"Test para validar tipo de dato\", validate_ObjectJson(pm.response))\r",
+							"\r",
+							"pm.test(\"Test para validar array de series\", validate_seriesMarvel(pm.response))\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/series?ts={{timestamp}}&hash={{hash}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"series"
+					],
+					"query": [
+						{
+							"key": "ts",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "hash",
+							"value": "{{hash}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post New Serie",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", validateOK201(pm))"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \" Vueling University: La pelicula\",\r\n    \"description\": \"En las oficinas de Viladecans\",\r\n    \"resourceURI\": \"http://vuelinguniversity.com/vamos\",\r\n    \"urls\": null,\r\n    \"startYear\": 2018,\r\n    \"endYear\": 2025,\r\n    \"rating\": \"\",\r\n    \"type\": \"flying\",\r\n    \"modified\": \"2020-07-29T09:04:18-0400\",\r\n    \"thumbnail\": null,\r\n    \"creators\": null,\r\n    \"characters\": null,\r\n    \"stories\": null,\r\n    \"comics\": null,\r\n    \"events\": null,\r\n    \"next\": null,\r\n    \"previous\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/series?ts={{timestamp}}&hash={{hash}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"series"
+					],
+					"query": [
+						{
+							"key": "ts",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "hash",
+							"value": "{{hash}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get One Serie",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"\r",
+							"validate_serieMarvel = function(data){\r",
+							"    dataJson = data.json().data.count\r",
+							"    pm.expect(dataJson).to.eql(1)\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Test para validar el status 200\", validateOK200(pm))\r",
+							"\r",
+							"pm.test(\"Test para validar tipo de dato\", validate_ObjectJson(pm.response))\r",
+							"\r",
+							"pm.test(\"Test para validar que obtenemos solo un objeto/serie\", validate_serieMarvel(pm.response))"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/series/:_Id?ts={{timestamp}}&hash={{hash}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"series",
+						":_Id"
+					],
+					"query": [
+						{
+							"key": "ts",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "hash",
+							"value": "{{hash}}"
+						}
+					],
+					"variable": [
+						{
+							"key": "_Id",
+							"value": "15435"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Specific Movie",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"validate_creators = function (data) {\r",
+							"    dataJson = data.json()\r",
+							"    console.log(dataJson)\r",
+							"    var peliculas = dataJson.data.results;\r",
+							"    peliculas.forEach((pelicula) => {\r",
+							"        var creators = pelicula.creators.available\r",
+							"        if ( creators >= 2) pm.expect(creators).to.greaterThan(1)\r",
+							"        else throw Error (\"There are movies that don't have creators\")\r",
+							"    })\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Test para validar el status 200\", validateOK200(pm))\r",
+							"\r",
+							"pm.test(\"Test para validar tipo de dato\", validate_ObjectJson(pm.response))\r",
+							"\r",
+							"pm.test(\"Test para validar que todas las peliculas tienen creadores\", validate_creators(pm.response))"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/series?ts={{timestamp}}&hash={{hash}}&seriesType=collection&contains=comic&orderBy=title&limit=100",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"series"
+					],
+					"query": [
+						{
+							"key": "ts",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "hash",
+							"value": "{{hash}}"
+						},
+						{
+							"key": "seriesType",
+							"value": "collection"
+						},
+						{
+							"key": "contains",
+							"value": "comic"
+						},
+						{
+							"key": "orderBy",
+							"value": "title"
+						},
+						{
+							"key": "limit",
+							"value": "100"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "in",
+				"value": "query",
+				"type": "string"
+			},
+			{
+				"key": "value",
+				"value": "6f102a2f4a82c4c3b27c0026433c1306",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "apikey",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"getAuthentication = (pm) => {",
+					"    const publicKey = '6f102a2f4a82c4c3b27c0026433c1306';",
+					"    const privateKey = 'fce64be1b649adec3f0de7ad531d7b88101d053d';",
+					"",
+					"    const timestamp = Math.floor(Date.now() / 1000).toString();",
+					"    pm.environment.set('timestamp', Math.floor(Date.now() / 1000).toString());",
+					"",
+					"",
+					"// Concatena la clave pública, la clave privada y el valor de tiempo",
+					"    const preHash = timestamp + privateKey + publicKey;",
+					"    pm.environment.set('hash', CryptoJS.MD5(preHash).toString());",
+					"",
+					"}",
+					"",
+					"validate_ObjectJson = function(data){",
+					"    dataJson = data.json().data.results",
+					"    pm.expect(dataJson).to.be.an('array');",
+					"}",
+					"",
+					"validateOK200 =  function (pm) { pm.response.to.have.status(200); }",
+					"",
+					"validateOK201 = function (pm) { pm.response.to.have.status(201); }",
+					"",
+					"",
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
