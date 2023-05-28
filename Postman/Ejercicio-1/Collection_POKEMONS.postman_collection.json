@@ -260,6 +260,116 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "GetPokemonsInKanto",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"validate_abilityIsHidden = function (pm) { \r",
+									"\r",
+									"    dataJson = pm.response.json()\r",
+									"    var pokemonsKanto = dataJson.pokemon_entries\r",
+									"    var pokemonsNameInKanto = []\r",
+									"    \r",
+									"    pokemonsKanto.forEach((item) => pokemonsNameInKanto.push(item.pokemon_species.name))\r",
+									"    console.log(pokemonsNameInKanto)\r",
+									"\r",
+									"    var hiddenAbilityCount = 0;\r",
+									"\r",
+									"    for (let i = 0; i < pokemonsNameInKanto.length; i++) {\r",
+									"        pm.sendRequest({ method: 'GET', url: pm.environment.get(\"url_base\")+'/pokemon/'+ pokemonsNameInKanto[i],async:false}, \r",
+									"        function(err, response){\r",
+									"            if (err) console.log(err);\r",
+									"            const responseBody = response.json().abilities;\r",
+									"\r",
+									"            responseBody.forEach((habilidad) => {\r",
+									"                if (habilidad.is_hidden) {\r",
+									"                    hiddenAbilityCount++;\r",
+									"                }\r",
+									"            })\r",
+									"        })\r",
+									"    }\r",
+									"    return pm.expect(pokemonsNameInKanto.length).to.eql(hiddenAbilityCount)\r",
+									"}\r",
+									"/* validate_abilityIsHidden = function (pm) {\r",
+									"    return new Promise((resolve, reject) => {\r",
+									"        dataJson = pm.response.json();\r",
+									"        var pokemonsKanto = dataJson.pokemon_entries;\r",
+									"        var pokemonsNameInKanto = [];\r",
+									"\r",
+									"        pokemonsKanto.forEach((item) => pokemonsNameInKanto.push(item.pokemon_species.name));\r",
+									"        console.log(pokemonsNameInKanto);\r",
+									"\r",
+									"        var hiddenAbilityCount = 0;\r",
+									"        var promises = [];\r",
+									"\r",
+									"        for (let i = 0; i < pokemonsNameInKanto.length; i++) {\r",
+									"            promises.push(\r",
+									"                new Promise((resolve, reject) => {\r",
+									"                    pm.sendRequest(\r",
+									"                        {\r",
+									"                            method: 'GET',\r",
+									"                            url: pm.environment.get(\"url_base\") + '/pokemon/' + pokemonsNameInKanto[i]\r",
+									"                        },\r",
+									"                        function (err, response) {\r",
+									"                            if (err) {\r",
+									"                                console.log(err);\r",
+									"                                reject(err);\r",
+									"                            }\r",
+									"                            const responseBody = response.json().abilities;\r",
+									"\r",
+									"                            responseBody.forEach((habilidad) => {\r",
+									"                                if (habilidad.is_hidden) hiddenAbilityCount++;\r",
+									"                            });\r",
+									"\r",
+									"                            resolve();\r",
+									"                        }\r",
+									"                    );\r",
+									"                })\r",
+									"            );\r",
+									"        }\r",
+									"\r",
+									"        Promise.all(promises)\r",
+									"            .then(() => {\r",
+									"                pm.expect(pokemonsNameInKanto.length).to.eql(hiddenAbilityCount);\r",
+									"            })\r",
+									"    });\r",
+									"}; */\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test para validar status 200\", validateOK200(pm))\r",
+									"\r",
+									"pm.test(\"Test para validar que todos los pokemons de Kanto tienen una habilidad oculta\", validate_abilityIsHidden(pm))"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}/{{endpoint_1}}/2",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"{{endpoint_1}}",
+								"2"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"event": [
@@ -315,6 +425,11 @@
 		{
 			"key": "_id",
 			"value": ""
+		},
+		{
+			"key": "endpoint_1",
+			"value": "pokedex",
+			"type": "string"
 		}
 	]
 }
