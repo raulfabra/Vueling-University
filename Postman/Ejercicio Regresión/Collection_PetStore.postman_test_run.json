@@ -1,0 +1,1744 @@
+{
+	"id": "e492341c-fafb-40bd-bb0a-5cdbf54a6572",
+	"name": "Collection_PetStore",
+	"timestamp": "2023-05-29T17:54:52.081Z",
+	"collection_id": "27562639-a474d169-d881-466c-a07f-b8e518590266",
+	"folder_id": 0,
+	"environment_id": "27562639-b4d85082-178f-4871-9b44-907e69185e25",
+	"totalPass": 370,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2023-05-29T17:54:28.262Z",
+	"totalFail": 10,
+	"results": [
+		{
+			"id": "da349ac8-40e0-47c7-bc93-e4a50c0aa416",
+			"name": "Get All Pets disponibles",
+			"url": "https://petstore.swagger.io/v2/pet/findByStatus?status=available",
+			"time": 111,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true,
+				"Recibida lista de mascotas con estado disponible ": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 5,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 5,
+					"fail": 0
+				},
+				"Recibida lista de mascotas con estado disponible ": {
+					"pass": 5,
+					"fail": 0
+				}
+			},
+			"times": [
+				460,
+				112,
+				111,
+				112,
+				111
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Recibida lista de mascotas con estado disponible ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Recibida lista de mascotas con estado disponible ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Recibida lista de mascotas con estado disponible ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Recibida lista de mascotas con estado disponible ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Recibida lista de mascotas con estado disponible ": true
+				}
+			]
+		},
+		{
+			"id": "2ca1ba59-75fb-4f3b-851c-75a864585937",
+			"name": "Post Create pet",
+			"url": "https://petstore.swagger.io/v2/pet",
+			"time": 106,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true,
+				"Test 'Pet name' its ok ": true,
+				"Validar que la mascota creada cumple con los req. mínimos": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 5,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 5,
+					"fail": 0
+				},
+				"Test 'Pet name' its ok ": {
+					"pass": 5,
+					"fail": 0
+				},
+				"Validar que la mascota creada cumple con los req. mínimos": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				106,
+				106,
+				106,
+				106,
+				106
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Test 'Pet name' its ok ": true,
+					"Validar que la mascota creada cumple con los req. mínimos": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Test 'Pet name' its ok ": true,
+					"Validar que la mascota creada cumple con los req. mínimos": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Test 'Pet name' its ok ": true,
+					"Validar que la mascota creada cumple con los req. mínimos": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Test 'Pet name' its ok ": true,
+					"Validar que la mascota creada cumple con los req. mínimos": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Test 'Pet name' its ok ": true,
+					"Validar que la mascota creada cumple con los req. mínimos": true
+				}
+			]
+		},
+		{
+			"id": "b6d2dd2b-af6f-49ec-8533-20b77649d871",
+			"name": "Get Pet by ID",
+			"url": "https://petstore.swagger.io/v2/pet/10000048",
+			"time": 107,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true,
+				" Pet recibido correcto ": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 5,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 5,
+					"fail": 0
+				},
+				" Pet recibido correcto ": {
+					"pass": 5,
+					"fail": 0
+				}
+			},
+			"times": [
+				105,
+				106,
+				106,
+				106,
+				107
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					" Pet recibido correcto ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					" Pet recibido correcto ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					" Pet recibido correcto ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					" Pet recibido correcto ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					" Pet recibido correcto ": true
+				}
+			]
+		},
+		{
+			"id": "5950f617-c2ab-4d22-b7c6-86ce8fbeb96c",
+			"name": "Post Create pet",
+			"url": "https://petstore.swagger.io/v2/pet",
+			"time": 106,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true,
+				"Test 'Pet name' its ok ": true,
+				"Validar que la mascota creada cumple con los req. mínimos": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 5,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 5,
+					"fail": 0
+				},
+				"Test 'Pet name' its ok ": {
+					"pass": 5,
+					"fail": 0
+				},
+				"Validar que la mascota creada cumple con los req. mínimos": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				106,
+				105,
+				108,
+				106,
+				106
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Test 'Pet name' its ok ": true,
+					"Validar que la mascota creada cumple con los req. mínimos": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Test 'Pet name' its ok ": true,
+					"Validar que la mascota creada cumple con los req. mínimos": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Test 'Pet name' its ok ": true,
+					"Validar que la mascota creada cumple con los req. mínimos": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Test 'Pet name' its ok ": true,
+					"Validar que la mascota creada cumple con los req. mínimos": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Test 'Pet name' its ok ": true,
+					"Validar que la mascota creada cumple con los req. mínimos": true
+				}
+			]
+		},
+		{
+			"id": "9ea2bfe4-368d-4c77-97b6-6397d548c465",
+			"name": "Get Pet by ID",
+			"url": "https://petstore.swagger.io/v2/pet/10000048",
+			"time": 105,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true,
+				" Pet recibido correcto ": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 5,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 5,
+					"fail": 0
+				},
+				" Pet recibido correcto ": {
+					"pass": 5,
+					"fail": 0
+				}
+			},
+			"times": [
+				106,
+				106,
+				106,
+				106,
+				105
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					" Pet recibido correcto ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					" Pet recibido correcto ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					" Pet recibido correcto ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					" Pet recibido correcto ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					" Pet recibido correcto ": true
+				}
+			]
+		},
+		{
+			"id": "b52382c3-7d44-46dc-b67c-7dfa0a7ce52b",
+			"name": "Update Pet",
+			"url": "https://petstore.swagger.io/v2/pet",
+			"time": 106,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true,
+				"Validar que el ID existe": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 5,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 5,
+					"fail": 0
+				},
+				"Validar que el ID existe": {
+					"pass": 5,
+					"fail": 0
+				}
+			},
+			"times": [
+				107,
+				106,
+				107,
+				106,
+				106
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Validar que el ID existe": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Validar que el ID existe": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Validar que el ID existe": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Validar que el ID existe": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Validar que el ID existe": true
+				}
+			]
+		},
+		{
+			"id": "2f6190b9-0773-46b0-a6bf-637f4b5e04f4",
+			"name": "CheckUpdate Pet",
+			"url": "https://petstore.swagger.io/v2/pet/10000048",
+			"time": 106,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true,
+				" Pet modificado correctamente ": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 5,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 5,
+					"fail": 0
+				},
+				" Pet modificado correctamente ": {
+					"pass": 5,
+					"fail": 0
+				}
+			},
+			"times": [
+				107,
+				106,
+				105,
+				106,
+				106
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					" Pet modificado correctamente ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					" Pet modificado correctamente ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					" Pet modificado correctamente ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					" Pet modificado correctamente ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					" Pet modificado correctamente ": true
+				}
+			]
+		},
+		{
+			"id": "46318329-47b0-45c3-bf54-34cdd26bf2f5",
+			"name": "Post New pet",
+			"url": "https://petstore.swagger.io/v2/pet",
+			"time": 107,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true,
+				"Test 'Pet name' its ok ": true,
+				"Validar que la mascota creada cumple con los req. mínimos": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 5,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 5,
+					"fail": 0
+				},
+				"Test 'Pet name' its ok ": {
+					"pass": 5,
+					"fail": 0
+				},
+				"Validar que la mascota creada cumple con los req. mínimos": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				106,
+				106,
+				109,
+				106,
+				107
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Test 'Pet name' its ok ": true,
+					"Validar que la mascota creada cumple con los req. mínimos": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Test 'Pet name' its ok ": true,
+					"Validar que la mascota creada cumple con los req. mínimos": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Test 'Pet name' its ok ": true,
+					"Validar que la mascota creada cumple con los req. mínimos": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Test 'Pet name' its ok ": true,
+					"Validar que la mascota creada cumple con los req. mínimos": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Test 'Pet name' its ok ": true,
+					"Validar que la mascota creada cumple con los req. mínimos": true
+				}
+			]
+		},
+		{
+			"id": "baa23e35-3621-4deb-b2ee-cb9a6e2ebb88",
+			"name": "Get Pet by ID",
+			"url": "https://petstore.swagger.io/v2/pet/10110001",
+			"time": 106,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true,
+				" Pet recibido correcto ": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 5,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 5,
+					"fail": 0
+				},
+				" Pet recibido correcto ": {
+					"pass": 5,
+					"fail": 0
+				}
+			},
+			"times": [
+				106,
+				106,
+				106,
+				106,
+				106
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					" Pet recibido correcto ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					" Pet recibido correcto ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					" Pet recibido correcto ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					" Pet recibido correcto ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					" Pet recibido correcto ": true
+				}
+			]
+		},
+		{
+			"id": "fdc1cb45-45ae-48c7-bc80-25579ffb232b",
+			"name": "Get groupOfPets",
+			"url": "https://petstore.swagger.io/v2/pet/findByStatus?status=available",
+			"time": 115,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true,
+				"Recibida lista de mascotas con estado disponible ": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 5,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 5,
+					"fail": 0
+				},
+				"Recibida lista de mascotas con estado disponible ": {
+					"pass": 5,
+					"fail": 0
+				}
+			},
+			"times": [
+				112,
+				114,
+				111,
+				112,
+				115
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Recibida lista de mascotas con estado disponible ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Recibida lista de mascotas con estado disponible ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Recibida lista de mascotas con estado disponible ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Recibida lista de mascotas con estado disponible ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Recibida lista de mascotas con estado disponible ": true
+				}
+			]
+		},
+		{
+			"id": "81541e8e-a04e-4290-a70a-e7e7aae35d07",
+			"name": "Delete thisPet",
+			"url": "https://petstore.swagger.io/v2/pet/10110001",
+			"time": 106,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 5,
+					"fail": 0
+				}
+			},
+			"times": [
+				106,
+				106,
+				106,
+				108,
+				106
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "456df947-5393-49b5-890a-6bfb4268d661",
+			"name": "Check thisPet is deleted",
+			"url": "https://petstore.swagger.io/v2/pet/10110001",
+			"time": 105,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code is 404": true,
+				"Content-Type is present": true,
+				" Pet recibido no existe ": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 5,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 5,
+					"fail": 0
+				},
+				" Pet recibido no existe ": {
+					"pass": 5,
+					"fail": 0
+				}
+			},
+			"times": [
+				107,
+				106,
+				107,
+				107,
+				105
+			],
+			"allTests": [
+				{
+					"Status code is 404": true,
+					"Content-Type is present": true,
+					" Pet recibido no existe ": true
+				},
+				{
+					"Status code is 404": true,
+					"Content-Type is present": true,
+					" Pet recibido no existe ": true
+				},
+				{
+					"Status code is 404": true,
+					"Content-Type is present": true,
+					" Pet recibido no existe ": true
+				},
+				{
+					"Status code is 404": true,
+					"Content-Type is present": true,
+					" Pet recibido no existe ": true
+				},
+				{
+					"Status code is 404": true,
+					"Content-Type is present": true,
+					" Pet recibido no existe ": true
+				}
+			]
+		},
+		{
+			"id": "983735f9-b0ee-4b82-83c8-25d605914c4e",
+			"name": "Check Pets availables",
+			"url": "https://petstore.swagger.io/v2/pet/findByStatus?status=available",
+			"time": 112,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true,
+				"Recibida lista de mascotas con estado disponible ": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 5,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 5,
+					"fail": 0
+				},
+				"Recibida lista de mascotas con estado disponible ": {
+					"pass": 5,
+					"fail": 0
+				}
+			},
+			"times": [
+				112,
+				112,
+				114,
+				112,
+				112
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Recibida lista de mascotas con estado disponible ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Recibida lista de mascotas con estado disponible ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Recibida lista de mascotas con estado disponible ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Recibida lista de mascotas con estado disponible ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Recibida lista de mascotas con estado disponible ": true
+				}
+			]
+		},
+		{
+			"id": "dae481d1-a58d-49d2-9bfb-0eaeb788937c",
+			"name": "Get All Pets disponibles",
+			"url": "https://petstore.swagger.io/v2/pet/findByStatus?status=available",
+			"time": 112,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true,
+				"Recibida lista de mascotas con estado disponible ": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 5,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 5,
+					"fail": 0
+				},
+				"Recibida lista de mascotas con estado disponible ": {
+					"pass": 5,
+					"fail": 0
+				}
+			},
+			"times": [
+				111,
+				111,
+				111,
+				112,
+				112
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Recibida lista de mascotas con estado disponible ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Recibida lista de mascotas con estado disponible ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Recibida lista de mascotas con estado disponible ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Recibida lista de mascotas con estado disponible ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Recibida lista de mascotas con estado disponible ": true
+				}
+			]
+		},
+		{
+			"id": "8ba38dcb-db1b-45fe-b9c0-a5b36e526139",
+			"name": "Get Pet by ID",
+			"url": "https://petstore.swagger.io/v2/pet/10000048",
+			"time": 107,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true,
+				" Pet recibido correcto ": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 5,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 5,
+					"fail": 0
+				},
+				" Pet recibido correcto ": {
+					"pass": 5,
+					"fail": 0
+				}
+			},
+			"times": [
+				106,
+				108,
+				106,
+				106,
+				107
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					" Pet recibido correcto ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					" Pet recibido correcto ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					" Pet recibido correcto ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					" Pet recibido correcto ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					" Pet recibido correcto ": true
+				}
+			]
+		},
+		{
+			"id": "470338bf-906e-4eff-a70c-76af4199a5de",
+			"name": "Update Pet with new file",
+			"url": "https://petstore.swagger.io/v2/pet/10000048/uploadImage",
+			"time": 106,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Status code is 200": false,
+				"Content-Type is present": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 0,
+					"fail": 5
+				},
+				"Content-Type is present": {
+					"pass": 5,
+					"fail": 0
+				}
+			},
+			"times": [
+				108,
+				106,
+				107,
+				106,
+				106
+			],
+			"allTests": [
+				{
+					"Status code is 200": false,
+					"Content-Type is present": true
+				},
+				{
+					"Status code is 200": false,
+					"Content-Type is present": true
+				},
+				{
+					"Status code is 200": false,
+					"Content-Type is present": true
+				},
+				{
+					"Status code is 200": false,
+					"Content-Type is present": true
+				},
+				{
+					"Status code is 200": false,
+					"Content-Type is present": true
+				}
+			]
+		},
+		{
+			"id": "8416dc1d-6715-403a-9f33-484fc08e7c22",
+			"name": "Get Pet by ID",
+			"url": "https://petstore.swagger.io/v2/pet/10000048",
+			"time": 107,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true,
+				" Pet recibido correcto ": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 5,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 5,
+					"fail": 0
+				},
+				" Pet recibido correcto ": {
+					"pass": 5,
+					"fail": 0
+				}
+			},
+			"times": [
+				106,
+				109,
+				106,
+				106,
+				107
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					" Pet recibido correcto ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					" Pet recibido correcto ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					" Pet recibido correcto ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					" Pet recibido correcto ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					" Pet recibido correcto ": true
+				}
+			]
+		},
+		{
+			"id": "4caa3383-a384-488a-8ade-8b2524f036fb",
+			"name": "Check All",
+			"url": "https://petstore.swagger.io/v2/pet/findByStatus?status=available",
+			"time": 113,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true,
+				"Recibida lista de mascotas con estado disponible ": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 5,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 5,
+					"fail": 0
+				},
+				"Recibida lista de mascotas con estado disponible ": {
+					"pass": 5,
+					"fail": 0
+				}
+			},
+			"times": [
+				111,
+				112,
+				112,
+				112,
+				113
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Recibida lista de mascotas con estado disponible ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Recibida lista de mascotas con estado disponible ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Recibida lista de mascotas con estado disponible ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Recibida lista de mascotas con estado disponible ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Recibida lista de mascotas con estado disponible ": true
+				}
+			]
+		},
+		{
+			"id": "589ee865-962e-4840-b817-4218a763bb40",
+			"name": "Post Create pet",
+			"url": "https://petstore.swagger.io/v2/pet",
+			"time": 106,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true,
+				"Test 'Pet name' its ok ": true,
+				"Validar que la mascota creada cumple con los req. mínimos": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 5,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 5,
+					"fail": 0
+				},
+				"Test 'Pet name' its ok ": {
+					"pass": 5,
+					"fail": 0
+				},
+				"Validar que la mascota creada cumple con los req. mínimos": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				105,
+				106,
+				108,
+				106,
+				106
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Test 'Pet name' its ok ": true,
+					"Validar que la mascota creada cumple con los req. mínimos": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Test 'Pet name' its ok ": true,
+					"Validar que la mascota creada cumple con los req. mínimos": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Test 'Pet name' its ok ": true,
+					"Validar que la mascota creada cumple con los req. mínimos": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Test 'Pet name' its ok ": true,
+					"Validar que la mascota creada cumple con los req. mínimos": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Test 'Pet name' its ok ": true,
+					"Validar que la mascota creada cumple con los req. mínimos": true
+				}
+			]
+		},
+		{
+			"id": "b01646db-160f-4695-9b63-9aa61700491d",
+			"name": "Get All Pets disponibles",
+			"url": "https://petstore.swagger.io/v2/pet/findByStatus?status=available",
+			"time": 112,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true,
+				"Recibida lista de mascotas con estado disponible ": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 5,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 5,
+					"fail": 0
+				},
+				"Recibida lista de mascotas con estado disponible ": {
+					"pass": 5,
+					"fail": 0
+				}
+			},
+			"times": [
+				111,
+				111,
+				112,
+				113,
+				112
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Recibida lista de mascotas con estado disponible ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Recibida lista de mascotas con estado disponible ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Recibida lista de mascotas con estado disponible ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Recibida lista de mascotas con estado disponible ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Recibida lista de mascotas con estado disponible ": true
+				}
+			]
+		},
+		{
+			"id": "5cf7b02e-fbdf-46fc-a374-8510fac50612",
+			"name": "Update Pet with new file",
+			"url": "https://petstore.swagger.io/v2/pet/20005555/uploadImage",
+			"time": 107,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Status code is 200": false,
+				"Content-Type is present": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 0,
+					"fail": 5
+				},
+				"Content-Type is present": {
+					"pass": 5,
+					"fail": 0
+				}
+			},
+			"times": [
+				111,
+				108,
+				107,
+				106,
+				107
+			],
+			"allTests": [
+				{
+					"Status code is 200": false,
+					"Content-Type is present": true
+				},
+				{
+					"Status code is 200": false,
+					"Content-Type is present": true
+				},
+				{
+					"Status code is 200": false,
+					"Content-Type is present": true
+				},
+				{
+					"Status code is 200": false,
+					"Content-Type is present": true
+				},
+				{
+					"Status code is 200": false,
+					"Content-Type is present": true
+				}
+			]
+		},
+		{
+			"id": "0a4c1729-efbf-4c3f-b8bc-860e48cc6ba4",
+			"name": "Get Pet by ID",
+			"url": "https://petstore.swagger.io/v2/pet/20005555",
+			"time": 106,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true,
+				" Pet recibido correcto ": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 5,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 5,
+					"fail": 0
+				},
+				" Pet recibido correcto ": {
+					"pass": 5,
+					"fail": 0
+				}
+			},
+			"times": [
+				106,
+				106,
+				105,
+				106,
+				106
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					" Pet recibido correcto ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					" Pet recibido correcto ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					" Pet recibido correcto ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					" Pet recibido correcto ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					" Pet recibido correcto ": true
+				}
+			]
+		},
+		{
+			"id": "3d361b13-a9b7-4979-9f58-e5ec59d3fc83",
+			"name": "Get All Pets Sold Out",
+			"url": "https://petstore.swagger.io/v2/pet/findByStatus?status=sold",
+			"time": 106,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true,
+				"Recibida lista de mascotas Sold OUT ": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 5,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 5,
+					"fail": 0
+				},
+				"Recibida lista de mascotas Sold OUT ": {
+					"pass": 5,
+					"fail": 0
+				}
+			},
+			"times": [
+				105,
+				106,
+				106,
+				106,
+				106
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Recibida lista de mascotas Sold OUT ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Recibida lista de mascotas Sold OUT ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Recibida lista de mascotas Sold OUT ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Recibida lista de mascotas Sold OUT ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Recibida lista de mascotas Sold OUT ": true
+				}
+			]
+		},
+		{
+			"id": "7945123c-81a0-48eb-bfa2-869a04d26b42",
+			"name": "Update Pet to Sold",
+			"url": "https://petstore.swagger.io/v2/pet",
+			"time": 106,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true,
+				"Validar que el ID existe": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 5,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 5,
+					"fail": 0
+				},
+				"Validar que el ID existe": {
+					"pass": 5,
+					"fail": 0
+				}
+			},
+			"times": [
+				105,
+				105,
+				106,
+				106,
+				106
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Validar que el ID existe": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Validar que el ID existe": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Validar que el ID existe": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Validar que el ID existe": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Validar que el ID existe": true
+				}
+			]
+		},
+		{
+			"id": "11c1e7ad-9513-4152-b46b-95d4f3de42b5",
+			"name": "Get All Pets Sold Out",
+			"url": "https://petstore.swagger.io/v2/pet/findByStatus?status=sold",
+			"time": 106,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true,
+				"Recibida lista de mascotas Sold OUT ": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 5,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 5,
+					"fail": 0
+				},
+				"Recibida lista de mascotas Sold OUT ": {
+					"pass": 5,
+					"fail": 0
+				}
+			},
+			"times": [
+				107,
+				107,
+				106,
+				106,
+				106
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Recibida lista de mascotas Sold OUT ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Recibida lista de mascotas Sold OUT ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Recibida lista de mascotas Sold OUT ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Recibida lista de mascotas Sold OUT ": true
+				},
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Recibida lista de mascotas Sold OUT ": true
+				}
+			]
+		},
+		{
+			"id": "c1546331-1240-42ef-b327-57e1178be51c",
+			"name": "Delete thisPet",
+			"url": "https://petstore.swagger.io/v2/pet/20005555",
+			"time": 106,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 5,
+					"fail": 0
+				}
+			},
+			"times": [
+				107,
+				106,
+				107,
+				107,
+				106
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				}
+			]
+		}
+	],
+	"count": 5,
+	"totalTime": 14339,
+	"collection": {
+		"requests": [
+			{
+				"id": "da349ac8-40e0-47c7-bc93-e4a50c0aa416",
+				"method": "GET"
+			},
+			{
+				"id": "2ca1ba59-75fb-4f3b-851c-75a864585937",
+				"method": "POST"
+			},
+			{
+				"id": "b6d2dd2b-af6f-49ec-8533-20b77649d871",
+				"method": "GET"
+			},
+			{
+				"id": "5950f617-c2ab-4d22-b7c6-86ce8fbeb96c",
+				"method": "POST"
+			},
+			{
+				"id": "9ea2bfe4-368d-4c77-97b6-6397d548c465",
+				"method": "GET"
+			},
+			{
+				"id": "b52382c3-7d44-46dc-b67c-7dfa0a7ce52b",
+				"method": "PUT"
+			},
+			{
+				"id": "2f6190b9-0773-46b0-a6bf-637f4b5e04f4",
+				"method": "GET"
+			},
+			{
+				"id": "46318329-47b0-45c3-bf54-34cdd26bf2f5",
+				"method": "POST"
+			},
+			{
+				"id": "baa23e35-3621-4deb-b2ee-cb9a6e2ebb88",
+				"method": "GET"
+			},
+			{
+				"id": "fdc1cb45-45ae-48c7-bc80-25579ffb232b",
+				"method": "GET"
+			},
+			{
+				"id": "81541e8e-a04e-4290-a70a-e7e7aae35d07",
+				"method": "DELETE"
+			},
+			{
+				"id": "456df947-5393-49b5-890a-6bfb4268d661",
+				"method": "GET"
+			},
+			{
+				"id": "983735f9-b0ee-4b82-83c8-25d605914c4e",
+				"method": "GET"
+			},
+			{
+				"id": "dae481d1-a58d-49d2-9bfb-0eaeb788937c",
+				"method": "GET"
+			},
+			{
+				"id": "8ba38dcb-db1b-45fe-b9c0-a5b36e526139",
+				"method": "GET"
+			},
+			{
+				"id": "470338bf-906e-4eff-a70c-76af4199a5de",
+				"method": "POST"
+			},
+			{
+				"id": "8416dc1d-6715-403a-9f33-484fc08e7c22",
+				"method": "GET"
+			},
+			{
+				"id": "4caa3383-a384-488a-8ade-8b2524f036fb",
+				"method": "GET"
+			},
+			{
+				"id": "589ee865-962e-4840-b817-4218a763bb40",
+				"method": "POST"
+			},
+			{
+				"id": "b01646db-160f-4695-9b63-9aa61700491d",
+				"method": "GET"
+			},
+			{
+				"id": "5cf7b02e-fbdf-46fc-a374-8510fac50612",
+				"method": "POST"
+			},
+			{
+				"id": "0a4c1729-efbf-4c3f-b8bc-860e48cc6ba4",
+				"method": "GET"
+			},
+			{
+				"id": "3d361b13-a9b7-4979-9f58-e5ec59d3fc83",
+				"method": "GET"
+			},
+			{
+				"id": "7945123c-81a0-48eb-bfa2-869a04d26b42",
+				"method": "PUT"
+			},
+			{
+				"id": "11c1e7ad-9513-4152-b46b-95d4f3de42b5",
+				"method": "GET"
+			},
+			{
+				"id": "c1546331-1240-42ef-b327-57e1178be51c",
+				"method": "DELETE"
+			}
+		]
+	}
+}

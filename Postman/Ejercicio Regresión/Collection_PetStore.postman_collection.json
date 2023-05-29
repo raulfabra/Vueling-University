@@ -1,0 +1,1271 @@
+{
+	"info": {
+		"_postman_id": "a474d169-d881-466c-a07f-b8e518590266",
+		"name": "Collection_PetStore",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27562639"
+	},
+	"item": [
+		{
+			"name": "Pet Case",
+			"item": [
+				{
+					"name": "PC01- Crear una mascota",
+					"item": [
+						{
+							"name": "Get All Pets disponibles",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )\r",
+											"\r",
+											"pm.test(\"Recibida lista de mascotas con estado disponible \", function(){\r",
+											"    pm.expect(validate_AllPets_available(pm.response)).to.eql(pm.response.json().length);\r",
+											"})\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}pet/findByStatus?status=available",
+									"host": [
+										"{{url_base}}pet"
+									],
+									"path": [
+										"findByStatus"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "available"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post Create pet",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )\r",
+											"\r",
+											"pm.test(\"Test 'Pet name' its ok \", function(){\r",
+											"    pm.expect(validate_PetName(pm.response)).to.eql(pm.collectionVariables.get(\"name_pet\"));\r",
+											"})\r",
+											"\r",
+											"pm.test(\"Validar que la mascota creada cumple con los req. mínimos\", function(){\r",
+											"    pm.expect(validate_PetKeys(pm.response)).to.eql(['id','category','name','photoUrls','tags','status'])\r",
+											"})\r",
+											"\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 10000048,\r\n  \"category\": {\r\n                \"id\": 0,\r\n                \"name\": \"string\"\r\n              },\r\n  \"name\": \"{{name_pet}}\",\r\n  \"photoUrls\": [ \"string\" ],\r\n  \"tags\": [],\r\n  \"status\": \"available\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_base}}pet",
+									"host": [
+										"{{url_base}}pet"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Pet by ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )\r",
+											"\r",
+											"pm.test(\" Pet recibido correcto \", function(){\r",
+											"    pm.expect(validate_PetCreate(pm.response)).to.eql(pm.collectionVariables.get(\"petID\"))\r",
+											"})\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}pet/{{petID}}",
+									"host": [
+										"{{url_base}}pet"
+									],
+									"path": [
+										"{{petID}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "PC02- Crear y editar una mascota",
+					"item": [
+						{
+							"name": "Post Create pet",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )\r",
+											"\r",
+											"pm.test(\"Test 'Pet name' its ok \", function(){\r",
+											"    pm.expect(validate_PetName(pm.response)).to.eql(pm.collectionVariables.get(\"name_pet\"));\r",
+											"})\r",
+											"\r",
+											"pm.test(\"Validar que la mascota creada cumple con los req. mínimos\", function(){\r",
+											"    pm.expect(validate_PetKeys(pm.response)).to.eql(['id','category','name','photoUrls','tags','status'])\r",
+											"})\r",
+											"\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 10000048,\r\n  \"category\": {\r\n                \"id\": 0,\r\n                \"name\": \"string\"\r\n              },\r\n  \"name\": \"{{name_pet}}\",\r\n  \"photoUrls\": [ \"string\" ],\r\n  \"tags\": [],\r\n  \"status\": \"available\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_base}}pet",
+									"host": [
+										"{{url_base}}pet"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Pet by ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )\r",
+											"\r",
+											"pm.test(\" Pet recibido correcto \", function(){\r",
+											"    pm.expect(validate_PetCreate(pm.response)).to.eql(pm.collectionVariables.get(\"petID\"))\r",
+											"})\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}pet/{{petID}}",
+									"host": [
+										"{{url_base}}pet"
+									],
+									"path": [
+										"{{petID}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Pet",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )\r",
+											"\r",
+											"pm.test(\"Validar que el ID existe\", function(){\r",
+											"    pm.expect(validate_ExistId(pm.response)).to.eql(true)\r",
+											"})\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"const random_Id = Math.floor((Math.random() * 100) + 1)\r",
+											"\r",
+											"pm.globals.set(\"random_Id\", random_Id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 10000048,\r\n  \"category\": {\r\n                \"id\": \"{{random_Id}}\",\r\n                \"name\": \"{{category_pet}}\"\r\n              },\r\n  \"name\": \"{{name_pet}}\",\r\n  \"photoUrls\": [ \"string\" ],\r\n  \"tags\": [],\r\n  \"status\": \"available\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_base}}pet",
+									"host": [
+										"{{url_base}}pet"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CheckUpdate Pet",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )\r",
+											"\r",
+											"pm.test(\" Pet modificado correctamente \", function(){\r",
+											"    pm.expect(validate_PetCreate(pm.response)).to.eql(pm.collectionVariables.get(\"petID\"))\r",
+											"})\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}pet/{{petID}}",
+									"host": [
+										"{{url_base}}pet"
+									],
+									"path": [
+										"{{petID}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "PC03- Crear nueva mascota y Eliminar mascota",
+					"item": [
+						{
+							"name": "Post New pet",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )\r",
+											"\r",
+											"pm.test(\"Test 'Pet name' its ok \", function(){\r",
+											"    pm.expect(validate_PetName(pm.response)).to.eql(pm.collectionVariables.get(\"name_pet_2\"));\r",
+											"})\r",
+											"\r",
+											"pm.test(\"Validar que la mascota creada cumple con los req. mínimos\", function(){\r",
+											"    pm.expect(validate_PetKeys(pm.response)).to.eql(['id','category','name','photoUrls','tags','status'])\r",
+											"})\r",
+											"\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"{{idPet_2}}\",\r\n  \"category\": {\r\n                \"id\": 0,\r\n                \"name\": \"string\"\r\n              },\r\n  \"name\": \"{{name_pet_2}}\",\r\n  \"photoUrls\": [ \"string\" ],\r\n  \"tags\": [],\r\n  \"status\": \"available\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_base}}pet",
+									"host": [
+										"{{url_base}}pet"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Pet by ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )\r",
+											"\r",
+											"pm.test(\" Pet recibido correcto \", function(){\r",
+											"    pm.expect(validate_PetCreate(pm.response)).to.eql(pm.collectionVariables.get(\"idPet_2\"))\r",
+											"})\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}pet/{{idPet_2}}",
+									"host": [
+										"{{url_base}}pet"
+									],
+									"path": [
+										"{{idPet_2}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get groupOfPets",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )\r",
+											"\r",
+											"pm.test(\"Recibida lista de mascotas con estado disponible \", function(){\r",
+											"    pm.expect(validate_AllPets_available(pm.response)).to.eql(pm.response.json().length);\r",
+											"})\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}pet/findByStatus?status=available",
+									"host": [
+										"{{url_base}}pet"
+									],
+									"path": [
+										"findByStatus"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "available"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete thisPet",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}pet/{{idPet_2}}",
+									"host": [
+										"{{url_base}}pet"
+									],
+									"path": [
+										"{{idPet_2}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Check thisPet is deleted",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", () => pm.response.to.have.status(validate_Status404_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )\r",
+											"\r",
+											"pm.test(\" Pet recibido no existe \", function(){\r",
+											"    pm.expect(validate_PetDeleted(pm.response)).to.include(\"Pet not found\");\r",
+											"})\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}pet/{{idPet_2}}",
+									"host": [
+										"{{url_base}}pet"
+									],
+									"path": [
+										"{{idPet_2}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Check Pets availables",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )\r",
+											"\r",
+											"pm.test(\"Recibida lista de mascotas con estado disponible \", function(){\r",
+											"    pm.expect(validate_AllPets_available(pm.response)).to.eql(pm.response.json().length);\r",
+											"})\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}pet/findByStatus?status=available",
+									"host": [
+										"{{url_base}}pet"
+									],
+									"path": [
+										"findByStatus"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "available"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "PC04- Buscar por ID y añadir funcionalidad",
+					"item": [
+						{
+							"name": "Get All Pets disponibles",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )\r",
+											"\r",
+											"pm.test(\"Recibida lista de mascotas con estado disponible \", function(){\r",
+											"    pm.expect(validate_AllPets_available(pm.response)).to.eql(pm.response.json().length);\r",
+											"})\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}pet/findByStatus?status=available",
+									"host": [
+										"{{url_base}}pet"
+									],
+									"path": [
+										"findByStatus"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "available"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Pet by ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )\r",
+											"\r",
+											"pm.test(\" Pet recibido correcto \", function(){\r",
+											"    pm.expect(validate_PetCreate(pm.response)).to.eql(pm.collectionVariables.get(\"petID\"))\r",
+											"})\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}pet/{{petID}}",
+									"host": [
+										"{{url_base}}pet"
+									],
+									"path": [
+										"{{petID}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Pet with new file",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "additionalMetadata",
+											"value": "29/05/2023",
+											"type": "text"
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/Users/Holacons/Pictures/Saved Pictures/_dog_pancho.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url_base}}pet/{{petID}}/uploadImage",
+									"host": [
+										"{{url_base}}pet"
+									],
+									"path": [
+										"{{petID}}",
+										"uploadImage"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Pet by ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )\r",
+											"\r",
+											"pm.test(\" Pet recibido correcto \", function(){\r",
+											"    pm.expect(validate_PetCreate(pm.response)).to.eql(pm.collectionVariables.get(\"petID\"))\r",
+											"})\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}pet/{{petID}}",
+									"host": [
+										"{{url_base}}pet"
+									],
+									"path": [
+										"{{petID}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Check All",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )\r",
+											"\r",
+											"pm.test(\"Recibida lista de mascotas con estado disponible \", function(){\r",
+											"    pm.expect(validate_AllPets_available(pm.response)).to.eql(pm.response.json().length);\r",
+											"})\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}pet/findByStatus?status=available",
+									"host": [
+										"{{url_base}}pet"
+									],
+									"path": [
+										"findByStatus"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "available"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "PC05- Vender un pet y actualizar su estado",
+					"item": [
+						{
+							"name": "Post Create pet",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )\r",
+											"\r",
+											"pm.test(\"Test 'Pet name' its ok \", function(){\r",
+											"    pm.expect(validate_PetName(pm.response)).to.eql(pm.collectionVariables.get(\"name_pet_3\"));\r",
+											"})\r",
+											"\r",
+											"pm.test(\"Validar que la mascota creada cumple con los req. mínimos\", function(){\r",
+											"    pm.expect(validate_PetKeys(pm.response)).to.eql(['id','category','name','photoUrls','tags','status'])\r",
+											"})\r",
+											"\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"{{idPet_3}}\",\r\n  \"category\": {\r\n                \"id\": 0,\r\n                \"name\": \"{{category_pet_3}}\"\r\n              },\r\n  \"name\": \"{{name_pet_3}}\",\r\n  \"photoUrls\": [ \"string\" ],\r\n  \"tags\": [],\r\n  \"status\": \"{{status}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_base}}pet",
+									"host": [
+										"{{url_base}}pet"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Pets disponibles",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )\r",
+											"\r",
+											"pm.test(\"Recibida lista de mascotas con estado disponible \", function(){\r",
+											"    pm.expect(validate_AllPets_available(pm.response)).to.eql(pm.response.json().length);\r",
+											"})\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}pet/findByStatus?status=available",
+									"host": [
+										"{{url_base}}pet"
+									],
+									"path": [
+										"findByStatus"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "available"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Pet with new file",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "additionalMetadata",
+											"value": "25/05/2023",
+											"type": "text"
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/Users/Holacons/Pictures/Saved Pictures/_dog_gianluca.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url_base}}pet/{{idPet_3}}/uploadImage",
+									"host": [
+										"{{url_base}}pet"
+									],
+									"path": [
+										"{{idPet_3}}",
+										"uploadImage"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Pet by ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )\r",
+											"\r",
+											"pm.test(\" Pet recibido correcto \", function(){\r",
+											"    pm.expect(validate_PetCreate(pm.response)).to.eql(pm.collectionVariables.get(\"idPet_3\"))\r",
+											"})\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}pet/{{idPet_3}}",
+									"host": [
+										"{{url_base}}pet"
+									],
+									"path": [
+										"{{idPet_3}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Pets Sold Out",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )\r",
+											"\r",
+											"pm.test(\"Recibida lista de mascotas Sold OUT \", function(){\r",
+											"    pm.expect(validate_AllPets_soldOut(pm.response)).to.eql(pm.response.json().length);\r",
+											"})\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}pet/findByStatus?status=sold",
+									"host": [
+										"{{url_base}}pet"
+									],
+									"path": [
+										"findByStatus"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "sold"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Pet to Sold",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )\r",
+											"\r",
+											"pm.test(\"Validar que el ID existe\", function(){\r",
+											"    pm.expect(validate_ExistId2(pm.response)).to.eql(true)\r",
+											"})\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"{{idPet_3}}\",\r\n  \"category\": {\r\n                \"id\": 0,\r\n                \"name\": \"{{category_pet_3}}\"\r\n              },\r\n  \"name\": \"{{name_pet_3}}\",\r\n  \"photoUrls\": [ \"string\" ],\r\n  \"tags\": [],\r\n  \"status\": \"sold\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_base}}pet",
+									"host": [
+										"{{url_base}}pet"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Pets Sold Out",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )\r",
+											"\r",
+											"pm.test(\"Recibida lista de mascotas Sold OUT \", function(){\r",
+											"    pm.expect(validate_AllPets_soldOut(pm.response)).to.eql(pm.response.json().length);\r",
+											"})\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}pet/findByStatus?status=sold",
+									"host": [
+										"{{url_base}}pet"
+									],
+									"path": [
+										"findByStatus"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "sold"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete thisPet",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}pet/{{idPet_3}}",
+									"host": [
+										"{{url_base}}pet"
+									],
+									"path": [
+										"{{idPet_3}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"validate_PetName = function(data){",
+							"    var jsonData = data.json();",
+							"    var name = jsonData.name;",
+							"    return name",
+							"}",
+							"",
+							"validate_AllPets_available = function(data){",
+							"    var dataJson = data.json()",
+							"    var checkStatus = dataJson.filter((pet) => pet.status === \"available\")",
+							"    return checkStatus.length",
+							"}",
+							"",
+							"validate_AllPets_soldOut = function(data){",
+							"    var dataJson = data.json()",
+							"    var checkStatus = dataJson.filter((pet) => pet.status === \"sold\")",
+							"    return checkStatus.length",
+							"}",
+							"",
+							"validate_PetCreate = function (data){",
+							"    var dataJson = data.json()",
+							"    var idRecibido = dataJson.id.toString()",
+							"    return idRecibido",
+							"}",
+							"",
+							"validate_PetKeys = function(data){",
+							"    var dataJson = data.json();",
+							"    return Object.keys(data.json())",
+							"}",
+							"",
+							"validate_ExistId = function(data){",
+							"    if (data.json().id == pm.collectionVariables.get(\"petID\")) return true",
+							"    else false",
+							"}",
+							"",
+							"validate_ExistId2 = function(data){",
+							"    if (data.json().id == pm.collectionVariables.get(\"idPet_3\")) return true",
+							"    else false",
+							"}",
+							"",
+							"validate_PetDeleted = (data) => data.json().message;"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "User Case",
+			"item": [
+				{
+					"name": "UC01- Crear nuevo usuario",
+					"item": []
+				},
+				{
+					"name": "UC02- Crear otro usuario y hacer login",
+					"item": []
+				},
+				{
+					"name": "UC03- Actualizar el usuario creado anteriormente",
+					"item": []
+				},
+				{
+					"name": "UC04- Hacer login y comprobar estar logeado",
+					"item": []
+				},
+				{
+					"name": "UC05- Hacer logout y comprobar desconexion.",
+					"item": []
+				},
+				{
+					"name": "UC06- Borrar una cuenta de Usuario",
+					"item": []
+				},
+				{
+					"name": "UC07- Crear usuario, comprobar que tiene accesos de Login y Logout, y eliminar cuenta.",
+					"item": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"validate_Status200_OK = (data) => 200;",
+					"",
+					"validate_Status204_OK = (data) => 204;",
+					"",
+					"validate_Status404_OK = (data) => 404;",
+					"",
+					"validate_ContentType_Header = (data) => \"Content-Type\";",
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "name_pet",
+			"value": "Pancho",
+			"type": "string"
+		},
+		{
+			"key": "petID",
+			"value": "10000048"
+		},
+		{
+			"key": "category_pet",
+			"value": "Aleman",
+			"type": "string"
+		},
+		{
+			"key": "name_pet_2",
+			"value": "Joshy",
+			"type": "string"
+		},
+		{
+			"key": "idPet_2",
+			"value": "10110001",
+			"type": "string"
+		},
+		{
+			"key": "status",
+			"value": "available",
+			"type": "string"
+		},
+		{
+			"key": "idPet_3",
+			"value": "20005555",
+			"type": "string"
+		},
+		{
+			"key": "name_pet_3",
+			"value": "Gianluca",
+			"type": "string"
+		},
+		{
+			"key": "category_pet_3",
+			"value": "breton",
+			"type": "string"
+		}
+	]
+}
