@@ -51,7 +51,6 @@ namespace Vueling.Auto.Template.WebPages
             Username.SendKeys("groguet1996");
             Password.SendKeys("1234asdf");
             btnLogger.Click();
-            //new WebDriverWait(WebDriver, TimeSpan.FromSeconds(WaitTimeout)).Until(CustomExpectedConditions.ElementIsVisible(btnWelcome));
 
             return this;
         }

@@ -143,7 +143,7 @@
     <Compile Include="SetUp\ISetUpWebDriver.cs" />
     <Compile Include="SetUp\SetUpWebDriver.cs" />
     <Compile Include="Tests\TestBase.cs" />
-    <Compile Include="Tests\Add_Laptop_Test.cs" />
+    <Compile Include="Tests\TestDispositivos.cs" />
     <Compile Include="WebPages.Base\CommonPage.cs" />
     <Compile Include="WebPages.Base\Page.cs" />
     <Compile Include="WebPages\CartPage.cs" />

@@ -96,7 +96,6 @@ namespace Vueling.Auto.Template.Tests
             abrirCatalogoPhones     .listPhones();
             añadirLaptopToCart      .GoCart();
             comprobarItems          .ComprobarCarrito("HTC One M9", "Apple monitor 24");
-            Thread.Sleep(1000);
             eliminarItems           .EliminarItems("HTC One M9");
             
         }
