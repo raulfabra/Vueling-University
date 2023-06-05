@@ -100,6 +100,9 @@
 											"function Almacenar_IdBoards(data){\r",
 											"    const board = data.json().idBoards\r",
 											"    const idBoard = board[(board.length - 1)];\r",
+											"    const newIdBoard = board[(board.length - 2)];\r",
+											"\r",
+											"    pm.collectionVariables.set(\"newIdBoard\", newIdBoard)\r",
 											"    pm.collectionVariables.set(\"idBoard\", idBoard);\r",
 											"    return idBoard\r",
 											"}\r",
@@ -1809,12 +1812,13 @@
 							"    var randomIdList = Math.floor(Math.random()*(jsonData.length));",
 							"    var idList = jsonData[randomIdList].id;",
 							"    console.log(idList)",
-							"    pm.globals.set(\"idListSpecial\", idList);",
+							"    pm.collectionVariables.set(\"idListSpecial\", idList);",
 							"    return idList.length",
 							"}",
 							"",
 							"validate_ExistId = function(data){",
-							"    if (data.json().id == pm.globals.get(\"idListSpecial\")) return true",
+							"    if (data.json().id == pm.collectionVariables.get(\"idListSpecial\")) return true",
+							"    ",
 							"    else false",
 							"}",
 							"",
@@ -1851,7 +1855,10 @@
 					"",
 					"validate_Status404_OK = (data) => 404;",
 					"",
-					"validate_ContentType_Header = (data) => \"Content-Type\";"
+					"validate_ContentType_Header = (data) => \"Content-Type\";",
+					"",
+					"",
+					""
 				]
 			}
 		},
@@ -1868,13 +1875,27 @@
 	"variable": [
 		{
 			"key": "API_KEY",
-			"value": "",
+			"value": "b0b070c8a7f4dd0ccaa4b23190f8c48c",
 			"type": "string"
 		},
 		{
 			"key": "TOKEN",
-			"value": "",
+			"value": "ATTAb7e50fc652e8149b211a1227d93ebe73e329d7b36c4316d2b6fe0ae3b2ba48756FBB6912",
 			"type": "string"
+		},
+		{
+			"key": "IdListProces",
+			"value": "647b3287b0c2aa80644459e5",
+			"type": "string"
+		},
+		{
+			"key": "IdListDone",
+			"value": "647b3287b0c2aa80644459e6",
+			"type": "string"
+		},
+		{
+			"key": "newIdBoard",
+			"value": ""
 		},
 		{
 			"key": "idBoard",
@@ -1893,15 +1914,7 @@
 			"value": ""
 		},
 		{
-			"key": "newIdBoard",
-			"value": ""
-		},
-		{
-			"key": "IdListProces",
-			"value": "647b3287b0c2aa80644459e5"
-		},
-		{
-			"key": "listaDeBoards",
+			"key": "idListSpecial",
 			"value": ""
 		},
 		{
@@ -1909,12 +1922,12 @@
 			"value": ""
 		},
 		{
-			"key": "idLabel",
+			"key": "listaDeBoards",
 			"value": ""
 		},
 		{
-			"key": "IdListDone",
-			"value": "647b3287b0c2aa80644459e6"
+			"key": "idLabel",
+			"value": ""
 		}
 	]
 }

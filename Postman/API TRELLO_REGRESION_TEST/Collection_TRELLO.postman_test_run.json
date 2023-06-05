@@ -1,0 +1,1313 @@
+{
+	"id": "6f6c3d01-293b-4227-b350-d3c3eaa59ade",
+	"name": "Collection_TRELLO",
+	"timestamp": "2023-06-05T15:46:44.418Z",
+	"collection_id": "27562639-61f7d948-fe69-4dc9-ac7a-0da89157a817",
+	"folder_id": 0,
+	"environment_id": "27562639-685d8a7e-72ce-45a5-90d0-33dc720dca6d",
+	"totalPass": 76,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2023-06-05T15:46:30.175Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "73d8b161-e309-4b42-b9cf-10855b80ca92",
+			"name": "GET A Member",
+			"url": "https://api.trello.com/1/members/647b1e8b32a39d429024aa47?key=b0b070c8a7f4dd0ccaa4b23190f8c48c&token=ATTAb7e50fc652e8149b211a1227d93ebe73e329d7b36c4316d2b6fe0ae3b2ba48756FBB6912",
+			"time": 423,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				423
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true
+				}
+			]
+		},
+		{
+			"id": "d8a1b015-ee6f-4bd7-aee3-e8a788233503",
+			"name": "GET Un Miembro",
+			"url": "https://api.trello.com/1/members/647b1e8b32a39d429024aa47/?key=b0b070c8a7f4dd0ccaa4b23190f8c48c&token=ATTAb7e50fc652e8149b211a1227d93ebe73e329d7b36c4316d2b6fe0ae3b2ba48756FBB6912",
+			"time": 210,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true,
+				"Guardado en variable de coleccion": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Guardado en variable de coleccion": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				210
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Guardado en variable de coleccion": true
+				}
+			]
+		},
+		{
+			"id": "9dfb876d-c35d-41f0-919a-cae84a4281d7",
+			"name": "GET Comprobar tableros del miembro",
+			"url": "https://api.trello.com/1/members/647b1e8b32a39d429024aa47/boards?key=b0b070c8a7f4dd0ccaa4b23190f8c48c&token=ATTAb7e50fc652e8149b211a1227d93ebe73e329d7b36c4316d2b6fe0ae3b2ba48756FBB6912",
+			"time": 204,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true,
+				"Validate this object is a boards of my account": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate this object is a boards of my account": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				204
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Validate this object is a boards of my account": true
+				}
+			]
+		},
+		{
+			"id": "f307d6fc-c5f8-4942-8ef1-d6b3bec31bfd",
+			"name": "POST Nueva Lista dentro de un Tablero",
+			"url": "https://api.trello.com/1/list/?key=b0b070c8a7f4dd0ccaa4b23190f8c48c&token=ATTAb7e50fc652e8149b211a1227d93ebe73e329d7b36c4316d2b6fe0ae3b2ba48756FBB6912&name=firstList&idBoard=647b32db78a4f905e0bf6a5e",
+			"time": 315,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true,
+				"Variable guardada en collection": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Variable guardada en collection": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				315
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Variable guardada en collection": true
+				}
+			]
+		},
+		{
+			"id": "b3593ae6-c063-4c78-99c5-480dbbf9dae8",
+			"name": "GET Validar creación de Lista",
+			"url": "https://api.trello.com/1/lists/647e03563b02ffe6e6a64d37?key=b0b070c8a7f4dd0ccaa4b23190f8c48c&token=ATTAb7e50fc652e8149b211a1227d93ebe73e329d7b36c4316d2b6fe0ae3b2ba48756FBB6912",
+			"time": 264,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true,
+				"Lista creada correctamente ": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Lista creada correctamente ": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				264
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Lista creada correctamente ": true
+				}
+			]
+		},
+		{
+			"id": "c24b93da-9ccc-4dcc-b22b-d7661c905e12",
+			"name": "GET Seleccionar un tablero de trabajo",
+			"url": "https://api.trello.com/1/boards/647b32db78a4f905e0bf6a5e/?key=b0b070c8a7f4dd0ccaa4b23190f8c48c&token=ATTAb7e50fc652e8149b211a1227d93ebe73e329d7b36c4316d2b6fe0ae3b2ba48756FBB6912",
+			"time": 271,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				271
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true
+				}
+			]
+		},
+		{
+			"id": "a15e940a-10bf-4d82-bb8c-1064abd36b37",
+			"name": "GET Verificar que hay una lista para notas.",
+			"url": "https://api.trello.com/1/lists/647e03563b02ffe6e6a64d37?key=b0b070c8a7f4dd0ccaa4b23190f8c48c&token=ATTAb7e50fc652e8149b211a1227d93ebe73e329d7b36c4316d2b6fe0ae3b2ba48756FBB6912",
+			"time": 232,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				232
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true
+				}
+			]
+		},
+		{
+			"id": "b1ae5905-dde4-4c78-89ba-b5eb0f1ed05a",
+			"name": "POST Crear card dentro de la lista",
+			"url": "https://api.trello.com/1/cards/?key=b0b070c8a7f4dd0ccaa4b23190f8c48c&token=ATTAb7e50fc652e8149b211a1227d93ebe73e329d7b36c4316d2b6fe0ae3b2ba48756FBB6912",
+			"time": 471,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true,
+				"Variable guardada en collection": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Variable guardada en collection": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				471
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Variable guardada en collection": true
+				}
+			]
+		},
+		{
+			"id": "825ad0ce-d50a-406a-8a5f-1b06059925b0",
+			"name": "Verificar la creación de la card",
+			"url": "https://api.trello.com/1/cards/647e035853e3f45026e9b631?key=b0b070c8a7f4dd0ccaa4b23190f8c48c&token=ATTAb7e50fc652e8149b211a1227d93ebe73e329d7b36c4316d2b6fe0ae3b2ba48756FBB6912",
+			"time": 225,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				225
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true
+				}
+			]
+		},
+		{
+			"id": "906bccaf-630a-48d3-80ea-af87b082624a",
+			"name": "POST Añadimos otro Pósit en la lista",
+			"url": "https://api.trello.com/1/cards/?key=b0b070c8a7f4dd0ccaa4b23190f8c48c&token=ATTAb7e50fc652e8149b211a1227d93ebe73e329d7b36c4316d2b6fe0ae3b2ba48756FBB6912&idList=647e03563b02ffe6e6a64d37",
+			"time": 358,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true,
+				"Variable guardada en collection": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Variable guardada en collection": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				358
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Variable guardada en collection": true
+				}
+			]
+		},
+		{
+			"id": "183bd26a-575f-4486-bd69-2c8b85a41565",
+			"name": "Verificar la creación del Pósit",
+			"url": "https://api.trello.com/1/cards/647e03591fd87aa051c303a9?key=b0b070c8a7f4dd0ccaa4b23190f8c48c&token=ATTAb7e50fc652e8149b211a1227d93ebe73e329d7b36c4316d2b6fe0ae3b2ba48756FBB6912",
+			"time": 232,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				232
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true
+				}
+			]
+		},
+		{
+			"id": "99d5a37c-e84f-4af4-86a9-aad807f36bd8",
+			"name": "Comprobar la integracion de las dos Cards.",
+			"url": "https://api.trello.com/1/lists/647e03563b02ffe6e6a64d37/cards?key=b0b070c8a7f4dd0ccaa4b23190f8c48c&token=ATTAb7e50fc652e8149b211a1227d93ebe73e329d7b36c4316d2b6fe0ae3b2ba48756FBB6912",
+			"time": 234,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				234
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true
+				}
+			]
+		},
+		{
+			"id": "efce5c22-13a9-4329-833e-9cfb9773ada0",
+			"name": "GET Elegir una lista de tareas",
+			"url": "https://api.trello.com/1/boards/647b3287b0c2aa80644459dd/lists/?key=b0b070c8a7f4dd0ccaa4b23190f8c48c&token=ATTAb7e50fc652e8149b211a1227d93ebe73e329d7b36c4316d2b6fe0ae3b2ba48756FBB6912",
+			"time": 253,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true,
+				"Validar que nos llega nuestra lista de Tareas ": true,
+				"Choose an exist list-job in a board": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar que nos llega nuestra lista de Tareas ": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Choose an exist list-job in a board": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				253
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Validar que nos llega nuestra lista de Tareas ": true,
+					"Choose an exist list-job in a board": true
+				}
+			]
+		},
+		{
+			"id": "56dcb9c5-70c3-4a34-805a-3f9f05f4a103",
+			"name": "PUT Cerrar estado de trabajo",
+			"url": "https://api.trello.com/1/lists/647b3287b0c2aa80644459e5/?key=b0b070c8a7f4dd0ccaa4b23190f8c48c&token=ATTAb7e50fc652e8149b211a1227d93ebe73e329d7b36c4316d2b6fe0ae3b2ba48756FBB6912",
+			"time": 240,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true,
+				"Validate the object are true": true,
+				"Validate the status 'closed' is true": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate the object are true": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate the status 'closed' is true": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				240
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Validate the object are true": true,
+					"Validate the status 'closed' is true": true
+				}
+			]
+		},
+		{
+			"id": "2a8e0b62-d726-4994-84d4-5b797994fef3",
+			"name": "POST Pasar cards finalizados a la lista DONE",
+			"url": "https://api.trello.com/1/lists/647b3287b0c2aa80644459e5/moveAllCards/?key=b0b070c8a7f4dd0ccaa4b23190f8c48c&token=ATTAb7e50fc652e8149b211a1227d93ebe73e329d7b36c4316d2b6fe0ae3b2ba48756FBB6912&idBoard=647b3287b0c2aa80644459dd&idList=647b3287b0c2aa80644459e6",
+			"time": 411,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true,
+				"Validate tranfers posids its OK": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate tranfers posids its OK": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				411
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Validate tranfers posids its OK": true
+				}
+			]
+		},
+		{
+			"id": "d096514f-c1c5-410d-acf6-eb47d2f7972b",
+			"name": "PUT Archivar la lista vacia",
+			"url": "https://api.trello.com/1/list/647b3287b0c2aa80644459e5/closed/?key=b0b070c8a7f4dd0ccaa4b23190f8c48c&token=ATTAb7e50fc652e8149b211a1227d93ebe73e329d7b36c4316d2b6fe0ae3b2ba48756FBB6912",
+			"time": 252,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				252
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "73b9f8b9-4fa4-4615-b36d-000b0d0e783c",
+			"name": "GET All cards",
+			"url": "https://api.trello.com/1/lists/647b3287b0c2aa80644459e6/cards?key=b0b070c8a7f4dd0ccaa4b23190f8c48c&token=ATTAb7e50fc652e8149b211a1227d93ebe73e329d7b36c4316d2b6fe0ae3b2ba48756FBB6912",
+			"time": 217,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				217
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true
+				}
+			]
+		},
+		{
+			"id": "d1643367-73fc-4265-a8fb-418130a8633e",
+			"name": "GET Comprobar tablero de trabajo",
+			"url": "https://api.trello.com/1/boards/647b3287b0c2aa80644459dd?key=b0b070c8a7f4dd0ccaa4b23190f8c48c&token=ATTAb7e50fc652e8149b211a1227d93ebe73e329d7b36c4316d2b6fe0ae3b2ba48756FBB6912",
+			"time": 243,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				243
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true
+				}
+			]
+		},
+		{
+			"id": "0aecaa7f-5dd6-4911-8236-6c2a3515877d",
+			"name": "POST Crear un nuevo tablero",
+			"url": "https://api.trello.com/1/boards?key=b0b070c8a7f4dd0ccaa4b23190f8c48c&token=ATTAb7e50fc652e8149b211a1227d93ebe73e329d7b36c4316d2b6fe0ae3b2ba48756FBB6912",
+			"time": 449,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true,
+				"Se guardo la variable el la coleccion": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Se guardo la variable el la coleccion": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				449
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Se guardo la variable el la coleccion": true
+				}
+			]
+		},
+		{
+			"id": "1fe4f37e-4752-4943-ad96-411779eb0595",
+			"name": "GET Comprobar Integracion todos los Tableros",
+			"url": "https://api.trello.com/1/members/647b1e8b32a39d429024aa47/boards?key=b0b070c8a7f4dd0ccaa4b23190f8c48c&token=ATTAb7e50fc652e8149b211a1227d93ebe73e329d7b36c4316d2b6fe0ae3b2ba48756FBB6912&fields=name,url",
+			"time": 220,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true,
+				"Validate this object is an array of boards": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate this object is an array of boards": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				220
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Validate this object is an array of boards": true
+				}
+			]
+		},
+		{
+			"id": "3276ed83-8c29-46f2-87a1-386cca382013",
+			"name": "POST Generar nueva lista de trabajo",
+			"url": "https://api.trello.com/1/list/?key=b0b070c8a7f4dd0ccaa4b23190f8c48c&token=ATTAb7e50fc652e8149b211a1227d93ebe73e329d7b36c4316d2b6fe0ae3b2ba48756FBB6912&name=Telecommuting&idBoard=647e035cd53693dbaaf0aec9",
+			"time": 552,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true,
+				"Variable guardada en collection": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Variable guardada en collection": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				552
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Variable guardada en collection": true
+				}
+			]
+		},
+		{
+			"id": "f9b9bb67-e460-4ee9-b0d9-e16f56f58bac",
+			"name": "POST Crear card ",
+			"url": "https://api.trello.com/1/cards/?key=b0b070c8a7f4dd0ccaa4b23190f8c48c&token=ATTAb7e50fc652e8149b211a1227d93ebe73e329d7b36c4316d2b6fe0ae3b2ba48756FBB6912",
+			"time": 534,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true,
+				"Variable guardada en collection": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Variable guardada en collection": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				534
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Variable guardada en collection": true
+				}
+			]
+		},
+		{
+			"id": "69387dac-9fc6-4eb1-928c-35382a298732",
+			"name": "Verificar la creación de la card",
+			"url": "https://api.trello.com/1/cards/647e035e5850e509ec92986b?key=b0b070c8a7f4dd0ccaa4b23190f8c48c&token=ATTAb7e50fc652e8149b211a1227d93ebe73e329d7b36c4316d2b6fe0ae3b2ba48756FBB6912",
+			"time": 276,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				276
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true
+				}
+			]
+		},
+		{
+			"id": "076d8c6c-9518-49da-b82c-b2870d430310",
+			"name": "PUT Modificar status de la NuevaLista",
+			"url": "https://api.trello.com/1/list/647b3287b0c2aa80644459e5/closed/?key=b0b070c8a7f4dd0ccaa4b23190f8c48c&token=ATTAb7e50fc652e8149b211a1227d93ebe73e329d7b36c4316d2b6fe0ae3b2ba48756FBB6912",
+			"time": 314,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				314
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "f1eff871-5787-4f5f-91a7-72e76dbd130e",
+			"name": "Verificar la creación del nuevo Espacio Trabajo",
+			"url": "https://api.trello.com/1/boards/647e035cd53693dbaaf0aec9?key=b0b070c8a7f4dd0ccaa4b23190f8c48c&token=ATTAb7e50fc652e8149b211a1227d93ebe73e329d7b36c4316d2b6fe0ae3b2ba48756FBB6912",
+			"time": 230,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				230
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true
+				}
+			]
+		},
+		{
+			"id": "fca25687-19cc-4fe1-afa1-a16dfc211c95",
+			"name": "GET Realizar acciones sobre el entorno de trabajo",
+			"url": "https://api.trello.com/1/boards/647e035cd53693dbaaf0aec9/actions?key=b0b070c8a7f4dd0ccaa4b23190f8c48c&token=ATTAb7e50fc652e8149b211a1227d93ebe73e329d7b36c4316d2b6fe0ae3b2ba48756FBB6912",
+			"time": 239,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				239
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "51e8784b-687b-4fda-a74e-a8b735c48591",
+			"name": "POST Nuevas etiquetas coloreadas",
+			"url": "https://api.trello.com/1/boards/647e035cd53693dbaaf0aec9/labels/?key=b0b070c8a7f4dd0ccaa4b23190f8c48c&token=ATTAb7e50fc652e8149b211a1227d93ebe73e329d7b36c4316d2b6fe0ae3b2ba48756FBB6912",
+			"time": 247,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true,
+				"Variable guardada en collection": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Variable guardada en collection": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				247
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Variable guardada en collection": true
+				}
+			]
+		},
+		{
+			"id": "beb2e505-5e0a-4a18-9f8c-d25dcadcd4ec",
+			"name": "GET Comprobar etiquetas disponibles",
+			"url": "https://api.trello.com/1/boards/647e035cd53693dbaaf0aec9/labels?key=b0b070c8a7f4dd0ccaa4b23190f8c48c&token=ATTAb7e50fc652e8149b211a1227d93ebe73e329d7b36c4316d2b6fe0ae3b2ba48756FBB6912",
+			"time": 239,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				239
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "d23f6070-93bb-48fb-a801-7fbc58961efb",
+			"name": "POST Añadir o Asignar etiqueta a un Trabajo esp.",
+			"url": "https://api.trello.com/1/cards/647e035e5850e509ec92986b/idLabels?key=b0b070c8a7f4dd0ccaa4b23190f8c48c&token=ATTAb7e50fc652e8149b211a1227d93ebe73e329d7b36c4316d2b6fe0ae3b2ba48756FBB6912",
+			"time": 261,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				261
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true
+				}
+			]
+		},
+		{
+			"id": "2b6f43c9-af0d-4e66-be2a-b5274c023b10",
+			"name": "POST Añadir Stickers",
+			"url": "https://api.trello.com/1/cards/647e035e5850e509ec92986b/stickers?key=b0b070c8a7f4dd0ccaa4b23190f8c48c&token=ATTAb7e50fc652e8149b211a1227d93ebe73e329d7b36c4316d2b6fe0ae3b2ba48756FBB6912",
+			"time": 283,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				283
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "a448c08c-3b03-45c6-b3b1-f7dc31782688",
+			"name": "POST Realizar movimiento a a la lista EN PROCESO",
+			"url": "https://api.trello.com/1/lists/647b3287b0c2aa80644459e6/moveAllCards/?key=b0b070c8a7f4dd0ccaa4b23190f8c48c&token=ATTAb7e50fc652e8149b211a1227d93ebe73e329d7b36c4316d2b6fe0ae3b2ba48756FBB6912&idBoard=647b3287b0c2aa80644459dd&idList=647b3287b0c2aa80644459e5",
+			"time": 416,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true,
+				"Validate tranfers posids its OK": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate tranfers posids its OK": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				416
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Validate tranfers posids its OK": true
+				}
+			]
+		},
+		{
+			"id": "ac736bb3-8534-47a9-abea-eb8d8db93e65",
+			"name": "GET Elegir un tablero disponible",
+			"url": "https://api.trello.com/1/boards/647e035cd53693dbaaf0aec9/?key=b0b070c8a7f4dd0ccaa4b23190f8c48c&token=ATTAb7e50fc652e8149b211a1227d93ebe73e329d7b36c4316d2b6fe0ae3b2ba48756FBB6912",
+			"time": 253,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				253
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true
+				}
+			]
+		},
+		{
+			"id": "8ba20550-9f16-482d-9c17-f84ef3f2f101",
+			"name": "DELETE Eliminar entorno de trabajo",
+			"url": "https://api.trello.com/1/boards/647e035cd53693dbaaf0aec9?key=b0b070c8a7f4dd0ccaa4b23190f8c48c&token=ATTAb7e50fc652e8149b211a1227d93ebe73e329d7b36c4316d2b6fe0ae3b2ba48756FBB6912",
+			"time": 1376,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				1376
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true
+				}
+			]
+		},
+		{
+			"id": "3eb958fb-90b3-41fb-9829-3fc05d293d58",
+			"name": "GET Verificar la eliminación del tablero",
+			"url": "https://api.trello.com/1/members/647b1e8b32a39d429024aa47/boards?key=b0b070c8a7f4dd0ccaa4b23190f8c48c&token=ATTAb7e50fc652e8149b211a1227d93ebe73e329d7b36c4316d2b6fe0ae3b2ba48756FBB6912&fields=name,url",
+			"time": 245,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type is present": true,
+				"Validate this object is an array of boards": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate this object is an array of boards": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				245
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type is present": true,
+					"Validate this object is an array of boards": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 11189,
+	"collection": {
+		"requests": [
+			{
+				"id": "73d8b161-e309-4b42-b9cf-10855b80ca92",
+				"method": "GET"
+			},
+			{
+				"id": "d8a1b015-ee6f-4bd7-aee3-e8a788233503",
+				"method": "GET"
+			},
+			{
+				"id": "9dfb876d-c35d-41f0-919a-cae84a4281d7",
+				"method": "GET"
+			},
+			{
+				"id": "f307d6fc-c5f8-4942-8ef1-d6b3bec31bfd",
+				"method": "POST"
+			},
+			{
+				"id": "b3593ae6-c063-4c78-99c5-480dbbf9dae8",
+				"method": "GET"
+			},
+			{
+				"id": "c24b93da-9ccc-4dcc-b22b-d7661c905e12",
+				"method": "GET"
+			},
+			{
+				"id": "a15e940a-10bf-4d82-bb8c-1064abd36b37",
+				"method": "GET"
+			},
+			{
+				"id": "b1ae5905-dde4-4c78-89ba-b5eb0f1ed05a",
+				"method": "POST"
+			},
+			{
+				"id": "825ad0ce-d50a-406a-8a5f-1b06059925b0",
+				"method": "GET"
+			},
+			{
+				"id": "906bccaf-630a-48d3-80ea-af87b082624a",
+				"method": "POST"
+			},
+			{
+				"id": "183bd26a-575f-4486-bd69-2c8b85a41565",
+				"method": "GET"
+			},
+			{
+				"id": "99d5a37c-e84f-4af4-86a9-aad807f36bd8",
+				"method": "GET"
+			},
+			{
+				"id": "efce5c22-13a9-4329-833e-9cfb9773ada0",
+				"method": "GET"
+			},
+			{
+				"id": "56dcb9c5-70c3-4a34-805a-3f9f05f4a103",
+				"method": "PUT"
+			},
+			{
+				"id": "2a8e0b62-d726-4994-84d4-5b797994fef3",
+				"method": "POST"
+			},
+			{
+				"id": "d096514f-c1c5-410d-acf6-eb47d2f7972b",
+				"method": "PUT"
+			},
+			{
+				"id": "73b9f8b9-4fa4-4615-b36d-000b0d0e783c",
+				"method": "GET"
+			},
+			{
+				"id": "d1643367-73fc-4265-a8fb-418130a8633e",
+				"method": "GET"
+			},
+			{
+				"id": "0aecaa7f-5dd6-4911-8236-6c2a3515877d",
+				"method": "POST"
+			},
+			{
+				"id": "1fe4f37e-4752-4943-ad96-411779eb0595",
+				"method": "GET"
+			},
+			{
+				"id": "3276ed83-8c29-46f2-87a1-386cca382013",
+				"method": "POST"
+			},
+			{
+				"id": "f9b9bb67-e460-4ee9-b0d9-e16f56f58bac",
+				"method": "POST"
+			},
+			{
+				"id": "69387dac-9fc6-4eb1-928c-35382a298732",
+				"method": "GET"
+			},
+			{
+				"id": "076d8c6c-9518-49da-b82c-b2870d430310",
+				"method": "PUT"
+			},
+			{
+				"id": "f1eff871-5787-4f5f-91a7-72e76dbd130e",
+				"method": "GET"
+			},
+			{
+				"id": "fca25687-19cc-4fe1-afa1-a16dfc211c95",
+				"method": "GET"
+			},
+			{
+				"id": "51e8784b-687b-4fda-a74e-a8b735c48591",
+				"method": "POST"
+			},
+			{
+				"id": "beb2e505-5e0a-4a18-9f8c-d25dcadcd4ec",
+				"method": "GET"
+			},
+			{
+				"id": "d23f6070-93bb-48fb-a801-7fbc58961efb",
+				"method": "POST"
+			},
+			{
+				"id": "2b6f43c9-af0d-4e66-be2a-b5274c023b10",
+				"method": "POST"
+			},
+			{
+				"id": "a448c08c-3b03-45c6-b3b1-f7dc31782688",
+				"method": "POST"
+			},
+			{
+				"id": "ac736bb3-8534-47a9-abea-eb8d8db93e65",
+				"method": "GET"
+			},
+			{
+				"id": "8ba20550-9f16-482d-9c17-f84ef3f2f101",
+				"method": "DELETE"
+			},
+			{
+				"id": "3eb958fb-90b3-41fb-9829-3fc05d293d58",
+				"method": "GET"
+			}
+		]
+	}
+}
