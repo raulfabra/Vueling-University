@@ -11,10 +11,11 @@ namespace Proyecto.Auto.Template.Tests
     [TestFixture]
     class OpenCartPage : TestSetCleanBase
     {
+
         //VARIABLES
         string email         = "pruebas@mailinator.com";
         string password      = "groguet96";
-
+        int[] price          = { 80, 100 };
         int[] value          = { 226, 217 };
         int[] value_2        = { 15, 2 };
         int[] idArticle      = { 30, 42, 48, 46 };
@@ -22,6 +23,58 @@ namespace Proyecto.Auto.Template.Tests
         string[] nameArticle = { "Canon EOS 5D", "Apple Cinema 30", "iPod Classic", "Sony VAIO" };
         string[] formulario  = { "Raul", "Fabra", "Sant vicent del raspeig", "Barcelona", "08010" };
 
+
+        [TestCase]
+        public void SignupANDLoginup()
+        {
+            homePage        = new HomePage(setUpWebDriver);
+            signupPage      = new SignUpPage(setUpWebDriver);
+
+            homePage        .GoSignUpPage();
+            signupPage      .FillRegister();
+            signupPage      .ValidateRegister(); //ASSERT
+        }
+
+        [TestCase]
+        public void AddToCartProduct()
+        {
+            homePage        = new HomePage(setUpWebDriver);
+            loginPage       = new LoginPage(setUpWebDriver);
+            desktopsPage    = new DesktopsPage(setUpWebDriver);
+            elementPage     = new ElementPage(setUpWebDriver);
+
+            homePage        .GoLoginPage();
+            loginPage       .GetLogin(email, password);
+
+            homePage        .GoDesktopsPage(menuPage[0]);
+            desktopsPage    .SeleccionarArticulo(idArticle[0]);
+            elementPage     .AddToCart(nameArticle[0], value[0], value_2[0]);
+            elementPage     .ValidateAddCart(price[0]);         //ASSERT
+            homePage        .GoToCartPage();
+
+        }
+
+        [TestCase]
+        public void RemoveProductFromCart()
+        {
+            homePage           = new HomePage(setUpWebDriver);
+            loginPage          = new LoginPage(setUpWebDriver);
+            desktopsPage       = new DesktopsPage(setUpWebDriver);
+            elementPage        = new ElementPage(setUpWebDriver);
+            shoppingPage       = new ShoppingPage(setUpWebDriver);
+
+            homePage            .GoLoginPage();
+            loginPage           .GetLogin(email, password);
+
+            homePage            .GoDesktopsPage(menuPage[0]);
+            desktopsPage        .SeleccionarArticulo(idArticle[2]);
+            elementPage         .AddToCart(nameArticle[2], value[0], value_2[0]);
+            elementPage         .ValidateAddCart(price[1]);     //ASSERT
+            homePage            .GoToCartPage();
+            shoppingPage        .RemoveItem();
+            shoppingPage        .ValidateRemoveAll();           //ASSERT
+
+        }
 
         [TestCase]
         public void BuyElectrodomestics()
@@ -32,11 +85,17 @@ namespace Proyecto.Auto.Template.Tests
             laptopsPage     = new LaptopsPage(setUpWebDriver);
             elementPage     = new ElementPage(setUpWebDriver);
             shoppingPage    = new ShoppingPage(setUpWebDriver);
+            paymentPage     = new PaymentPage(setUpWebDriver);
 
+
+
+            homePage        .ValidateStayAtHome();              //ASSERT
             homePage        .GoLoginPage();
             loginPage       .GetLogin(email, password);
+            loginPage       .ValidateLogIn();                   //ASSERT
 
             homePage        .GoDesktopsPage(menuPage[0]);
+            desktopsPage    .ValidateGetAllDesktops();          //ASSERT
             desktopsPage    .SeleccionarArticulo(idArticle[0]);
             elementPage     .AddToCart(nameArticle[0], value[0], value_2[0]);
 
@@ -56,34 +115,30 @@ namespace Proyecto.Auto.Template.Tests
             shoppingPage    .GetPurchase();
 
 
-            //Assert.AreEqual("")
-            //Agrupar metodos repetitivos en un bucle
-            //Assert estoy en la Home
-            //Assert estoy Loggeado
-            //Assert obtengo todos los articulos de desktops
-            //Assert tengo el articulo seleccionado *3
-            //Assert Articulo añadido correctamente *3
-            //Assert estoy en el carrito
-            //Assert la suma de precios es la correcta o Precio TOTAL CHECK
 
-            //FormularioPaymentMethod(formulario);
+            paymentPage     .BillingDetails(formulario);
+            paymentPage     .DeliveryDetails();
+            paymentPage     .DeliveryMethod();
+            paymentPage     .PaymentMethod();
+            paymentPage     .ConfirmOrder();
             
-            paymentPage = new PaymentPage(setUpWebDriver);
-
-            paymentPage.BillingDetails(formulario);
-            paymentPage.DeliveryDetails();
-            paymentPage.DeliveryMethod();
-            paymentPage.PaymentMethod();
-            paymentPage.ConfirmOrder();
+                    
+            //Agrupar metodos repetitivos en un bucle // COMO LO PODRIA PASAR AL TEST?
+            
+            //FormularioPaymentMethod(formulario); // LO MISMO QUE LO DE ARRIBAR, ME GUSTARIA AGRUPAR TODO
+                                                   // EL PAYMENT EN UNA FUNCION APARTE Y LLAMAR ESA FUNCION.
             
         }
 
-        //[TestCase]
-        //public void CheckSponsor()
-        //{
-            
-        //}
+        [TestCase]
+        public void CheckSponsor()
+        {
 
+        }
+
+    }
+
+}
         //public void FormularioPaymentMethod(string[] formulario)
         //{
         //    paymentPage = new PaymentPage(setUpWebDriver);
@@ -98,11 +153,6 @@ namespace Proyecto.Auto.Template.Tests
         //    //ASSERT CONFIRMADO EL PEDIDO
 
         //}
-    }
-
-     
-
-}
 
             //googlePage = new GooglePage(setUpWebDriver);
             //test.Log(Status.Debug, "Entra en Google.");

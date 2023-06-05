@@ -60,6 +60,7 @@ namespace Proyecto.Auto.Template.Tests
     {
         #region Definitions
         protected HomePage homePage;
+        protected SignUpPage signupPage;
         protected LoginPage loginPage;
         
         protected DesktopsPage desktopsPage;

@@ -3,6 +3,7 @@ using Proyecto.Auto.Template.WebPages.Base;
 using OpenQA.Selenium;
 using System.Collections.Generic;
 using System.Threading;
+using NUnit.Framework;
 
 namespace Proyecto.Auto.Template.Webpages
 {
@@ -18,7 +19,8 @@ namespace Proyecto.Auto.Template.Webpages
 
         private IWebElement Articulos (int idArticle) => WebDriver.FindElementByXPath($"//h4/a[contains(@href, 'product_id={idArticle}')]");
 
-        
+        private IWebElement MessageArticulos => WebDriver.FindElementByXPath("//h3");
+
 
         protected override IWebElement ApartadosBusqueda => throw new System.NotImplementedException();
 
@@ -29,6 +31,12 @@ namespace Proyecto.Auto.Template.Webpages
         public DesktopsPage SeleccionarArticulo(int idArticle)
         {
             Articulos(idArticle).Click();
+            return this;
+        }
+
+        public DesktopsPage ValidateGetAllDesktops()
+        {
+            Assert.AreEqual("Refine Search", MessageArticulos.Text);
             return this;
         }
 

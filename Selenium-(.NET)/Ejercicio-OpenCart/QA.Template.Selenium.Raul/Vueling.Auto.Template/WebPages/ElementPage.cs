@@ -5,6 +5,7 @@ using System.Threading;
 using OpenQA.Selenium.Support.UI;
 using System;
 using Proyecto.Auto.Template.Common;
+using NUnit.Framework;
 
 namespace OpenCart.Auto.Template.Webpages
 {
@@ -19,7 +20,7 @@ namespace OpenCart.Auto.Template.Webpages
 
         //Define WebElements by: Id, CssSelector or XPath
 
-        private By ImagenDelProducto (string nameArticle) => By.XPath($"//img[@title ='{nameArticle}']");
+        private By ImagenDelProducto => By.XPath("//div[@class='alert alert-success alert-dismissible']");
 
         private IWebElement OptionRadio => WebDriver.FindElementByXPath("//input[@type = 'radio' and @name= 'option[218]']");
 
@@ -36,6 +37,8 @@ namespace OpenCart.Auto.Template.Webpages
         private IWebElement OptionQTY => WebDriver.FindElementById("input-quantity");
 
         private IWebElement ButtonAddCart => WebDriver.FindElementById("button-cart");
+
+        private IWebElement MessageCart => WebDriver.FindElementByXPath("//div[@id='cart']//span");
 
         protected override IWebElement ApartadosBusqueda => throw new System.NotImplementedException();
         //private IWebElement BuscarButton => throw new System.NotImplementedException();
@@ -74,6 +77,14 @@ namespace OpenCart.Auto.Template.Webpages
             }
 
 
+            return this;
+        }
+
+        public ElementPage ValidateAddCart(int price)
+        {
+            new WebDriverWait(WebDriver, TimeSpan.FromSeconds(WaitTimeout)).Until(CustomExpectedConditions.ElementIsVisible(ImagenDelProducto));
+            
+            Assert.AreNotEqual($" 1 item(s) - ${price}.00", MessageCart.Text);
             return this;
         }
     }

@@ -48,7 +48,7 @@ namespace OpenCart.Auto.Template.Webpages
 
         public PaymentPage BillingDetails(string[] formulario)
         {
-            //new WebDriverWait(WebDriver, TimeSpan.FromSeconds(WaitTimeout)).Until(CustomExpectedConditions.ElementIsVisible());
+            
             CheckNewAdress  .Click();
 
             FirstName       .SendKeys(formulario[0]);
@@ -80,6 +80,7 @@ namespace OpenCart.Auto.Template.Webpages
 
         public PaymentPage PaymentMethod()
         {
+            WebDriverWait wait = new WebDriverWait(WebDriver, TimeSpan.FromSeconds(40));
             AcceptTermsAndConditions.Click();
             BtnContinue3.Click();
             return this;

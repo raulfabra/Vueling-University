@@ -5,6 +5,7 @@ using System.Threading;
 using OpenQA.Selenium.Support.UI;
 using System;
 using Proyecto.Auto.Template.Common;
+using NUnit.Framework;
 
 namespace OpenCart.Auto.Template.Webpages
 {
@@ -22,6 +23,8 @@ namespace OpenCart.Auto.Template.Webpages
 
         private IWebElement BtnLogIn    => WebDriver.FindElementByCssSelector("//a[@title='My Account']//../ul//a[text()='Login']");
 
+        private IWebElement MessageLogged => WebDriver.FindElementByXPath("//div[@id='content']/h2[text()='My Orders']");
+       
         private By SubtitleNewCustomer => By.TagName("h2");
 
         private By SubtitleMyAccount => By.TagName("h2");
@@ -55,8 +58,15 @@ namespace OpenCart.Auto.Template.Webpages
             Password.SendKeys(password);
             SetLogIn.Click();
             new WebDriverWait(WebDriver, TimeSpan.FromSeconds(WaitTimeout)).Until(CustomExpectedConditions.ElementIsVisible(SubtitleMyAccount));
-            BtnHome.Click();
+            
 
+            return this;
+        }
+
+        public LoginPage ValidateLogIn()
+        {
+            Assert.AreEqual("My Orders", MessageLogged.Text);
+            BtnHome.Click();
             return this;
         }
 

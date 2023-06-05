@@ -21,27 +21,30 @@ namespace OpenCart.Auto.Template.Webpages
         //Define WebElements by: Id, CssSelector or XPath
 
         private IWebElement BtnHome => WebDriver.FindElementByXPath("//a[text()='Your Store']");
-
         private IWebElement BtnAccount => WebDriver.FindElementByXPath("//a[@title = 'My Account']");
-
         private IWebElement BtnLogIn => WebDriver.FindElementByXPath("//a[@title='My Account']//../ul//a[text()='Login']");
-
+        private IWebElement BtnSignUp => WebDriver.FindElementByXPath("//a[@title='My Account']//../ul//a[text()='Register']");
         private IWebElement BtnDesktops => WebDriver.FindElementByXPath("//li[@class = 'dropdown']/a[text()='Desktops']");
-
         private IWebElement BtnLaptops => WebDriver.FindElementByXPath("//li[@class = 'dropdown']/a[text()='Laptops & Notebooks']");
-
         private IWebElement BtnShoppingCart => WebDriver.FindElementByXPath("//a[@title='Shopping Cart']");
 
         private IWebElement ShowAllItems (string article) => WebDriver.FindElementByXPath($"//div[@class = 'dropdown-menu']/a[text()='{article}']");
 
-
-
-
+        private IWebElement MessageHome => WebDriver.FindElementByTagName("h3");
+        
         protected override IWebElement ApartadosBusqueda => throw new System.NotImplementedException();
         //private IWebElement BuscarButton => throw new System.NotImplementedException();
 
 
         //Define functions and actions 
+
+        public HomePage GoSignUpPage()
+        {
+            BtnAccount.Click();
+            BtnSignUp.Click();
+
+            return this;
+        }
 
         public HomePage GoLoginPage()
         {            
@@ -76,9 +79,10 @@ namespace OpenCart.Auto.Template.Webpages
 
         }
 
-        //public HomePage CheckSponsor()
-        //{
-
-        //}
+        public HomePage ValidateStayAtHome()
+        {
+            Assert.AreEqual("Featured", MessageHome.Text);
+            return this;
+        }
     }
 }
