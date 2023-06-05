@@ -50,8 +50,8 @@ namespace OpenCart.Auto.Template.Webpages
         {
             
             CheckNewAdress  .Click();
-
-            FirstName       .SendKeys(formulario[0]);
+            WebDriverWait wait = new WebDriverWait(WebDriver, TimeSpan.FromSeconds(40));
+            FirstName.SendKeys(formulario[0]);
             LastName        .SendKeys(formulario[1]);
             Address1        .SendKeys(formulario[2]);
             City            .SendKeys(formulario[3]);
