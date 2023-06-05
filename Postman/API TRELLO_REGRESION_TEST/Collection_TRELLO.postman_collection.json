@@ -1,0 +1,1920 @@
+{
+	"info": {
+		"_postman_id": "61f7d948-fe69-4dc9-ac7a-0da89157a817",
+		"name": "Collection_TRELLO",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27562639"
+	},
+	"item": [
+		{
+			"name": "REGRESION_TEST",
+			"item": [
+				{
+					"name": "TC001 - Comprobar que existe mi cuenta.",
+					"item": [
+						{
+							"name": "GET A Member",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{PROTOCOLO}}{{url_base}}/1/members/{{Id_member}}?key={{API_KEY}}&token={{TOKEN}}",
+									"host": [
+										"{{PROTOCOLO}}{{url_base}}"
+									],
+									"path": [
+										"1",
+										"members",
+										"{{Id_member}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{API_KEY}}"
+										},
+										{
+											"key": "token",
+											"value": "{{TOKEN}}"
+										},
+										{
+											"key": "fields",
+											"value": "name",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "TC002 - Crear una Lista de Trabajo",
+					"item": [
+						{
+							"name": "GET Un Miembro",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )\r",
+											"\r",
+											"pm.test(\"Guardado en variable de coleccion\", () => pm.expect(Almacenar_IdBoards(pm.response)).to.eql(pm.collectionVariables.get(\"idBoard\")) );\r",
+											"\r",
+											"\r",
+											"//Almacenar ID's de los tableros\r",
+											"function Almacenar_IdBoards(data){\r",
+											"    const board = data.json().idBoards\r",
+											"    const idBoard = board[(board.length - 1)];\r",
+											"    pm.collectionVariables.set(\"idBoard\", idBoard);\r",
+											"    return idBoard\r",
+											"}\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{PROTOCOLO}}{{url_base}}/1/members/{{Id_member}}/?key={{API_KEY}}&token={{TOKEN}}",
+									"host": [
+										"{{PROTOCOLO}}{{url_base}}"
+									],
+									"path": [
+										"1",
+										"members",
+										"{{Id_member}}",
+										""
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{API_KEY}}"
+										},
+										{
+											"key": "token",
+											"value": "{{TOKEN}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET Comprobar tableros del miembro",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) );\r",
+											"\r",
+											"pm.test(\"Validate this object is a boards of my account\", () => pm.expect(validate_objectJSON(pm)).to.eql(pm.environment.get(\"Id_member\")) )\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{PROTOCOLO}}{{url_base}}/1/members/{{Id_member}}/boards?key={{API_KEY}}&token={{TOKEN}}",
+									"host": [
+										"{{PROTOCOLO}}{{url_base}}"
+									],
+									"path": [
+										"1",
+										"members",
+										"{{Id_member}}",
+										"boards"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{API_KEY}}"
+										},
+										{
+											"key": "token",
+											"value": "{{TOKEN}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST Nueva Lista dentro de un Tablero",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )\r",
+											"\r",
+											"pm.test(\"Variable guardada en collection\", () => pm.collectionVariables.set(\"idList\", pm.response.json().id) )"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{PROTOCOLO}}{{url_base}}/1/list/?key={{API_KEY}}&token={{TOKEN}}&name=firstList&idBoard={{idBoard}}",
+									"host": [
+										"{{PROTOCOLO}}{{url_base}}"
+									],
+									"path": [
+										"1",
+										"list",
+										""
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{API_KEY}}"
+										},
+										{
+											"key": "token",
+											"value": "{{TOKEN}}"
+										},
+										{
+											"key": "name",
+											"value": "firstList"
+										},
+										{
+											"key": "idBoard",
+											"value": "{{idBoard}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET Validar creación de Lista",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) );\r",
+											"\r",
+											"pm.test(\"Lista creada correctamente \", function (){\r",
+											"    pm.sendRequest(\"https://api.trello.com/1/members/raulfabra1/?key=b0b070c8a7f4dd0ccaa4b23190f8c48c&token=ATTAb7e50fc652e8149b211a1227d93ebe73e329d7b36c4316d2b6fe0ae3b2ba48756FBB6912\", \r",
+											"            function (err, response) {\r",
+											"                    const boards = response.json().idBoards\r",
+											"                    pm.expect(boards[(boards.length - 1)]).to.equal(pm.response.json().idBoard)\r",
+											"            }\r",
+											"    )}\r",
+											")\r",
+											"\r",
+											"\r",
+											"\r",
+											"\r",
+											"\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{PROTOCOLO}}{{url_base}}/1/lists/{{idList}}?key={{API_KEY}}&token={{TOKEN}}",
+									"host": [
+										"{{PROTOCOLO}}{{url_base}}"
+									],
+									"path": [
+										"1",
+										"lists",
+										"{{idList}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{API_KEY}}"
+										},
+										{
+											"key": "token",
+											"value": "{{TOKEN}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "TC003 - Crear Cards dentro de la Lista",
+					"item": [
+						{
+							"name": "GET Seleccionar un tablero de trabajo",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{PROTOCOLO}}{{url_base}}/1/boards/{{idBoard}}/?key={{API_KEY}}&token={{TOKEN}}",
+									"host": [
+										"{{PROTOCOLO}}{{url_base}}"
+									],
+									"path": [
+										"1",
+										"boards",
+										"{{idBoard}}",
+										""
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{API_KEY}}"
+										},
+										{
+											"key": "token",
+											"value": "{{TOKEN}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET Verificar que hay una lista para notas.",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{PROTOCOLO}}{{url_base}}/1/lists/{{idList}}?key={{API_KEY}}&token={{TOKEN}}",
+									"host": [
+										"{{PROTOCOLO}}{{url_base}}"
+									],
+									"path": [
+										"1",
+										"lists",
+										"{{idList}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{API_KEY}}"
+										},
+										{
+											"key": "token",
+											"value": "{{TOKEN}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST Crear card dentro de la lista",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )\r",
+											"\r",
+											"pm.test(\"Variable guardada en collection\", () => pm.collectionVariables.set(\"idCard\", pm.response.json().id) )"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"badges\": {\r\n        \"attachmentsByType\": {\r\n            \"trello\": {\r\n                \"board\": 0,\r\n                \"card\": 0\r\n            }\r\n        },\r\n        \"location\": false,\r\n        \"votes\": 0,\r\n        \"viewingMemberVoted\": false,\r\n        \"subscribed\": false,\r\n        \"fogbugz\": \"\",\r\n        \"checkItems\": 0,\r\n        \"checkItemsChecked\": 0,\r\n        \"checkItemsEarliestDue\": null,\r\n        \"comments\": 0,\r\n        \"attachments\": 0,\r\n        \"description\": false,\r\n        \"due\": null,\r\n        \"dueComplete\": false,\r\n        \"start\": null\r\n    },\r\n    \"closed\": false,\r\n    \"email\": null,\r\n    \"idList\": \"{{idList}}\",\r\n    \"name\": \"To_Do\",\r\n    \"cover\": {\r\n        \"idAttachment\": null,\r\n        \"color\": \"red\",\r\n        \"idUploadedBackground\": null,\r\n        \"size\": \"normal\",\r\n        \"brightness\": \"dark\",\r\n        \"idPlugin\": null\r\n    },\r\n    \"isTemplate\": false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{PROTOCOLO}}{{url_base}}/1/cards/?key={{API_KEY}}&token={{TOKEN}}",
+									"host": [
+										"{{PROTOCOLO}}{{url_base}}"
+									],
+									"path": [
+										"1",
+										"cards",
+										""
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{API_KEY}}"
+										},
+										{
+											"key": "token",
+											"value": "{{TOKEN}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Verificar la creación de la card",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{PROTOCOLO}}{{url_base}}/1/cards/{{idCard}}?key={{API_KEY}}&token={{TOKEN}}",
+									"host": [
+										"{{PROTOCOLO}}{{url_base}}"
+									],
+									"path": [
+										"1",
+										"cards",
+										"{{idCard}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{API_KEY}}"
+										},
+										{
+											"key": "token",
+											"value": "{{TOKEN}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST Añadimos otro Pósit en la lista",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )\r",
+											"\r",
+											"pm.test(\"Variable guardada en collection\", () => pm.collectionVariables.set(\"idCard2\", pm.response.json().id) )"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"badges\": {\r\n        \"attachmentsByType\": {\r\n            \"trello\": {\r\n                \"board\": 0,\r\n                \"card\": 0\r\n            }\r\n        },\r\n        \"location\": false,\r\n        \"votes\": 0,\r\n        \"viewingMemberVoted\": false,\r\n        \"subscribed\": false,\r\n        \"fogbugz\": \"\",\r\n        \"checkItems\": 0,\r\n        \"checkItemsChecked\": 0,\r\n        \"checkItemsEarliestDue\": null,\r\n        \"comments\": 0,\r\n        \"attachments\": 0,\r\n        \"description\": false,\r\n        \"due\": null,\r\n        \"dueComplete\": false,\r\n        \"start\": null\r\n    },\r\n    \"closed\": false,\r\n    \"email\": null,\r\n    \"idList\": \"{{idList}}\",\r\n    \"name\": \"Segundooo Posiiiiit\",\r\n    \"cover\": {\r\n        \"idAttachment\": null,\r\n        \"color\": \"blue\",\r\n        \"idUploadedBackground\": null,\r\n        \"size\": \"normal\",\r\n        \"brightness\": \"dark\",\r\n        \"idPlugin\": null\r\n    },\r\n    \"isTemplate\": false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{PROTOCOLO}}{{url_base}}/1/cards/?key={{API_KEY}}&token={{TOKEN}}&idList={{idList}}",
+									"host": [
+										"{{PROTOCOLO}}{{url_base}}"
+									],
+									"path": [
+										"1",
+										"cards",
+										""
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{API_KEY}}"
+										},
+										{
+											"key": "token",
+											"value": "{{TOKEN}}"
+										},
+										{
+											"key": "idList",
+											"value": "{{idList}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Verificar la creación del Pósit",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{PROTOCOLO}}{{url_base}}/1/cards/{{idCard2}}?key={{API_KEY}}&token={{TOKEN}}",
+									"host": [
+										"{{PROTOCOLO}}{{url_base}}"
+									],
+									"path": [
+										"1",
+										"cards",
+										"{{idCard2}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{API_KEY}}"
+										},
+										{
+											"key": "token",
+											"value": "{{TOKEN}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Comprobar la integracion de las dos Cards.",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{PROTOCOLO}}{{url_base}}/1/lists/{{idList}}/cards?key={{API_KEY}}&token={{TOKEN}}",
+									"host": [
+										"{{PROTOCOLO}}{{url_base}}"
+									],
+									"path": [
+										"1",
+										"lists",
+										"{{idList}}",
+										"cards"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{API_KEY}}"
+										},
+										{
+											"key": "token",
+											"value": "{{TOKEN}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "TC004 - Editar tareas ya realizadas",
+					"item": [
+						{
+							"name": "GET Elegir una lista de tareas",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) );\r",
+											"\r",
+											"pm.test(\"Validar que nos llega nuestra lista de Tareas \", function () {pm.expect(pm.response.json()).to.be.an('array')});\r",
+											"\r",
+											"pm.test(\"Choose an exist list-job in a board\", function () {pm.expect(validateListWorks(pm)).to.eql(24)});\r",
+											"\r",
+											"\r",
+											"\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{PROTOCOLO}}{{url_base}}/1/boards/{{newIdBoard}}/lists/?key={{API_KEY}}&token={{TOKEN}}",
+									"host": [
+										"{{PROTOCOLO}}{{url_base}}"
+									],
+									"path": [
+										"1",
+										"boards",
+										"{{newIdBoard}}",
+										"lists",
+										""
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{API_KEY}}"
+										},
+										{
+											"key": "token",
+											"value": "{{TOKEN}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "PUT Cerrar estado de trabajo",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) );\r",
+											"\r",
+											"pm.test(\"Validate the object are true\", function () { pm.expect(validate_ExistId(pm.response)).to.eql(true)});\r",
+											"\r",
+											"pm.test(\"Validate the status 'closed' is true\", function () { pm.expect(pm.response.json().closed).to.eql(false)});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"closed\": false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{PROTOCOLO}}{{url_base}}/1/lists/{{idListSpecial}}/?key={{API_KEY}}&token={{TOKEN}}",
+									"host": [
+										"{{PROTOCOLO}}{{url_base}}"
+									],
+									"path": [
+										"1",
+										"lists",
+										"{{idListSpecial}}",
+										""
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{API_KEY}}"
+										},
+										{
+											"key": "token",
+											"value": "{{TOKEN}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST Pasar cards finalizados a la lista DONE",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) );\r",
+											"\r",
+											"pm.test(\"Validate tranfers posids its OK\", () => pm.expect(validate_MoveCards(pm.response)).to.eql(true));"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{PROTOCOLO}}{{url_base}}/1/lists/{{IdListProces}}/moveAllCards/?key={{API_KEY}}&token={{TOKEN}}&idBoard={{newIdBoard}}&idList=647b3287b0c2aa80644459e6",
+									"host": [
+										"{{PROTOCOLO}}{{url_base}}"
+									],
+									"path": [
+										"1",
+										"lists",
+										"{{IdListProces}}",
+										"moveAllCards",
+										""
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{API_KEY}}"
+										},
+										{
+											"key": "token",
+											"value": "{{TOKEN}}"
+										},
+										{
+											"key": "idBoard",
+											"value": "{{newIdBoard}}"
+										},
+										{
+											"key": "idList",
+											"value": "647b3287b0c2aa80644459e6"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "PUT Archivar la lista vacia",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"value\": \"true\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{PROTOCOLO}}{{url_base}}/1/list/{{IdListProces}}/closed/?key={{API_KEY}}&token={{TOKEN}}",
+									"host": [
+										"{{PROTOCOLO}}{{url_base}}"
+									],
+									"path": [
+										"1",
+										"list",
+										"{{IdListProces}}",
+										"closed",
+										""
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{API_KEY}}"
+										},
+										{
+											"key": "token",
+											"value": "{{TOKEN}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET All cards",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{PROTOCOLO}}{{url_base}}/1/lists/:id/cards?key={{API_KEY}}&token={{TOKEN}}",
+									"host": [
+										"{{PROTOCOLO}}{{url_base}}"
+									],
+									"path": [
+										"1",
+										"lists",
+										":id",
+										"cards"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{API_KEY}}"
+										},
+										{
+											"key": "token",
+											"value": "{{TOKEN}}"
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "647b3287b0c2aa80644459e6"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET Comprobar tablero de trabajo",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{PROTOCOLO}}{{url_base}}/1/boards/{{newIdBoard}}?key={{API_KEY}}&token={{TOKEN}}",
+									"host": [
+										"{{PROTOCOLO}}{{url_base}}"
+									],
+									"path": [
+										"1",
+										"boards",
+										"{{newIdBoard}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{API_KEY}}"
+										},
+										{
+											"key": "token",
+											"value": "{{TOKEN}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "TC005 - Añadir nuevo espacio de Trabajo",
+					"item": [
+						{
+							"name": "POST Crear un nuevo tablero",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) );\r",
+											"\r",
+											"pm.collectionVariables.set(\"newBoard\", pm.response.json().id);\r",
+											"\r",
+											"pm.test(\"Se guardo la variable el la coleccion\", () => \"hola\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"name\": \"POSTMAN_CREATED\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{PROTOCOLO}}{{url_base}}/1/boards?key={{API_KEY}}&token={{TOKEN}}",
+									"host": [
+										"{{PROTOCOLO}}{{url_base}}"
+									],
+									"path": [
+										"1",
+										"boards"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{API_KEY}}"
+										},
+										{
+											"key": "token",
+											"value": "{{TOKEN}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET Comprobar Integracion todos los Tableros",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) );\r",
+											"\r",
+											"pm.test(\"Validate this object is an array of boards\", () => pm.expect(pm.response.json()).to.be.an('array') );\r",
+											"\r",
+											"(function pasarBoardALaSiguienteRequest (){\r",
+											"    let listaDeBoardsDisponibles = pm.response.json()\r",
+											"    pm.collectionVariables.set(\"listaDeBoards\", listaDeBoardsDisponibles);\r",
+											"})()\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{PROTOCOLO}}{{url_base}}/1/members/{{Id_member}}/boards?key={{API_KEY}}&token={{TOKEN}}&fields=name,url",
+									"host": [
+										"{{PROTOCOLO}}{{url_base}}"
+									],
+									"path": [
+										"1",
+										"members",
+										"{{Id_member}}",
+										"boards"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{API_KEY}}"
+										},
+										{
+											"key": "token",
+											"value": "{{TOKEN}}"
+										},
+										{
+											"key": "fields",
+											"value": "name,url"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST Generar nueva lista de trabajo",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )\r",
+											"\r",
+											"pm.test(\"Variable guardada en collection\", () => pm.collectionVariables.set(\"idList\", pm.response.json().id) )"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{PROTOCOLO}}{{url_base}}/1/list/?key={{API_KEY}}&token={{TOKEN}}&name=Telecommuting&idBoard={{newBoard}}",
+									"host": [
+										"{{PROTOCOLO}}{{url_base}}"
+									],
+									"path": [
+										"1",
+										"list",
+										""
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{API_KEY}}"
+										},
+										{
+											"key": "token",
+											"value": "{{TOKEN}}"
+										},
+										{
+											"key": "name",
+											"value": "Telecommuting"
+										},
+										{
+											"key": "idBoard",
+											"value": "{{newBoard}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST Crear card ",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )\r",
+											"\r",
+											"pm.test(\"Variable guardada en collection\", () => pm.collectionVariables.set(\"idCard\", pm.response.json().id) )"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"badges\": {\r\n        \"attachmentsByType\": {\r\n            \"trello\": {\r\n                \"board\": 0,\r\n                \"card\": 0\r\n            }\r\n        },\r\n        \"location\": false,\r\n        \"votes\": 0,\r\n        \"viewingMemberVoted\": false,\r\n        \"subscribed\": false,\r\n        \"fogbugz\": \"\",\r\n        \"checkItems\": 0,\r\n        \"checkItemsChecked\": 0,\r\n        \"checkItemsEarliestDue\": null,\r\n        \"comments\": 0,\r\n        \"attachments\": 0,\r\n        \"description\": false,\r\n        \"due\": null,\r\n        \"dueComplete\": false,\r\n        \"start\": null\r\n    },\r\n    \"closed\": false,\r\n    \"email\": null,\r\n    \"idList\": \"{{idList}}\",\r\n    \"name\": \"Trabajar con la API de Trello hasta rebentar el servidor\",\r\n    \"cover\": {\r\n        \"idAttachment\": null,\r\n        \"color\": \"red\",\r\n        \"idUploadedBackground\": null,\r\n        \"size\": \"normal\",\r\n        \"brightness\": \"dark\",\r\n        \"idPlugin\": null\r\n    },\r\n    \"isTemplate\": false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{PROTOCOLO}}{{url_base}}/1/cards/?key={{API_KEY}}&token={{TOKEN}}",
+									"host": [
+										"{{PROTOCOLO}}{{url_base}}"
+									],
+									"path": [
+										"1",
+										"cards",
+										""
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{API_KEY}}"
+										},
+										{
+											"key": "token",
+											"value": "{{TOKEN}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Verificar la creación de la card",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{PROTOCOLO}}{{url_base}}/1/cards/{{idCard}}?key={{API_KEY}}&token={{TOKEN}}",
+									"host": [
+										"{{PROTOCOLO}}{{url_base}}"
+									],
+									"path": [
+										"1",
+										"cards",
+										"{{idCard}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{API_KEY}}"
+										},
+										{
+											"key": "token",
+											"value": "{{TOKEN}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "PUT Modificar status de la NuevaLista",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"value\": \"false\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{PROTOCOLO}}{{url_base}}/1/list/{{IdListProces}}/closed/?key={{API_KEY}}&token={{TOKEN}}",
+									"host": [
+										"{{PROTOCOLO}}{{url_base}}"
+									],
+									"path": [
+										"1",
+										"list",
+										"{{IdListProces}}",
+										"closed",
+										""
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{API_KEY}}"
+										},
+										{
+											"key": "token",
+											"value": "{{TOKEN}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Verificar la creación del nuevo Espacio Trabajo",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{PROTOCOLO}}{{url_base}}/1/boards/{{newBoard}}?key={{API_KEY}}&token={{TOKEN}}",
+									"host": [
+										"{{PROTOCOLO}}{{url_base}}"
+									],
+									"path": [
+										"1",
+										"boards",
+										"{{newBoard}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{API_KEY}}"
+										},
+										{
+											"key": "token",
+											"value": "{{TOKEN}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "TC006 - Generar nuevas acciones de trabajo",
+					"item": [
+						{
+							"name": "GET Realizar acciones sobre el entorno de trabajo",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{PROTOCOLO}}{{url_base}}/1/boards/{{newBoard}}/actions?key={{API_KEY}}&token={{TOKEN}}",
+									"host": [
+										"{{PROTOCOLO}}{{url_base}}"
+									],
+									"path": [
+										"1",
+										"boards",
+										"{{newBoard}}",
+										"actions"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{API_KEY}}"
+										},
+										{
+											"key": "token",
+											"value": "{{TOKEN}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST Nuevas etiquetas coloreadas",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )\r",
+											"\r",
+											"pm.test(\"Variable guardada en collection\", () => pm.collectionVariables.set(\"idLabel\", pm.response.json().id) )"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Raul\",\r\n    \"color\": \"orange_light\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{PROTOCOLO}}{{url_base}}/1/boards/{{newBoard}}/labels/?key={{API_KEY}}&token={{TOKEN}}",
+									"host": [
+										"{{PROTOCOLO}}{{url_base}}"
+									],
+									"path": [
+										"1",
+										"boards",
+										"{{newBoard}}",
+										"labels",
+										""
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{API_KEY}}"
+										},
+										{
+											"key": "token",
+											"value": "{{TOKEN}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET Comprobar etiquetas disponibles",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{PROTOCOLO}}{{url_base}}/1/boards/{{newBoard}}/labels?key={{API_KEY}}&token={{TOKEN}}",
+									"host": [
+										"{{PROTOCOLO}}{{url_base}}"
+									],
+									"path": [
+										"1",
+										"boards",
+										"{{newBoard}}",
+										"labels"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{API_KEY}}"
+										},
+										{
+											"key": "token",
+											"value": "{{TOKEN}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST Añadir o Asignar etiqueta a un Trabajo esp.",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) )"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"value\": \"{{idLabel}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{PROTOCOLO}}{{url_base}}/1/cards/{{idCard}}/idLabels?key={{API_KEY}}&token={{TOKEN}}",
+									"host": [
+										"{{PROTOCOLO}}{{url_base}}"
+									],
+									"path": [
+										"1",
+										"cards",
+										"{{idCard}}",
+										"idLabels"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{API_KEY}}"
+										},
+										{
+											"key": "token",
+											"value": "{{TOKEN}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST Añadir Stickers",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"image\": \"taco-cool\",\r\n    \"top\": 50,\r\n    \"left\": 20,\r\n    \"zIndex\": 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{PROTOCOLO}}{{url_base}}/1/cards/{{idCard}}/stickers?key={{API_KEY}}&token={{TOKEN}}",
+									"host": [
+										"{{PROTOCOLO}}{{url_base}}"
+									],
+									"path": [
+										"1",
+										"cards",
+										"{{idCard}}",
+										"stickers"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{API_KEY}}"
+										},
+										{
+											"key": "token",
+											"value": "{{TOKEN}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST Realizar movimiento a a la lista EN PROCESO",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) );\r",
+											"\r",
+											"pm.test(\"Validate tranfers posids its OK\", () => pm.expect(validate_MoveCards(pm.response)).to.eql(true));"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{PROTOCOLO}}{{url_base}}/1/lists/{{IdListDone}}/moveAllCards/?key={{API_KEY}}&token={{TOKEN}}&idBoard={{newIdBoard}}&idList={{IdListProces}}",
+									"host": [
+										"{{PROTOCOLO}}{{url_base}}"
+									],
+									"path": [
+										"1",
+										"lists",
+										"{{IdListDone}}",
+										"moveAllCards",
+										""
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{API_KEY}}"
+										},
+										{
+											"key": "token",
+											"value": "{{TOKEN}}"
+										},
+										{
+											"key": "idBoard",
+											"value": "{{newIdBoard}}"
+										},
+										{
+											"key": "idList",
+											"value": "{{IdListProces}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "TC007 - Eliminar entorno de trabajo completado",
+					"item": [
+						{
+							"name": "GET Elegir un tablero disponible",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) );\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{PROTOCOLO}}{{url_base}}/1/boards/{{newBoard}}/?key={{API_KEY}}&token={{TOKEN}}",
+									"host": [
+										"{{PROTOCOLO}}{{url_base}}"
+									],
+									"path": [
+										"1",
+										"boards",
+										"{{newBoard}}",
+										""
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{API_KEY}}"
+										},
+										{
+											"key": "token",
+											"value": "{{TOKEN}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DELETE Eliminar entorno de trabajo",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) );"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{PROTOCOLO}}{{url_base}}/1/boards/{{newBoard}}?key={{API_KEY}}&token={{TOKEN}}",
+									"host": [
+										"{{PROTOCOLO}}{{url_base}}"
+									],
+									"path": [
+										"1",
+										"boards",
+										"{{newBoard}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{API_KEY}}"
+										},
+										{
+											"key": "token",
+											"value": "{{TOKEN}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET Verificar la eliminación del tablero",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => pm.response.to.have.status(validate_Status200_OK()) );\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", () => pm.response.to.have.header(validate_ContentType_Header()) );\r",
+											"\r",
+											"pm.test(\"Validate this object is an array of boards\", () => pm.expect(pm.response.json()).to.be.an('array') );\r",
+											"\r",
+											"(function pasarBoardALaSiguienteRequest (){\r",
+											"    let listaDeBoardsDisponibles = pm.response.json()\r",
+											"    pm.collectionVariables.set(\"listaDeBoards\", listaDeBoardsDisponibles);\r",
+											"})()\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{PROTOCOLO}}{{url_base}}/1/members/{{Id_member}}/boards?key={{API_KEY}}&token={{TOKEN}}&fields=name,url",
+									"host": [
+										"{{PROTOCOLO}}{{url_base}}"
+									],
+									"path": [
+										"1",
+										"members",
+										"{{Id_member}}",
+										"boards"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{API_KEY}}"
+										},
+										{
+											"key": "token",
+											"value": "{{TOKEN}}"
+										},
+										{
+											"key": "fields",
+											"value": "name,url"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"validate_objectJSON = function (pm) {",
+							"    var jsonData = pm.response.json();",
+							"    var creador;",
+							"    jsonData.forEach(board => creador = board.idMemberCreator)",
+							"    return creador",
+							"}",
+							"",
+							"validateListWorks = function (pm) {",
+							"    var jsonData = pm.response.json();",
+							"    var randomIdList = Math.floor(Math.random()*(jsonData.length));",
+							"    var idList = jsonData[randomIdList].id;",
+							"    console.log(idList)",
+							"    pm.globals.set(\"idListSpecial\", idList);",
+							"    return idList.length",
+							"}",
+							"",
+							"validate_ExistId = function(data){",
+							"    if (data.json().id == pm.globals.get(\"idListSpecial\")) return true",
+							"    else false",
+							"}",
+							"",
+							"validate_MoveCards = function(data){",
+							"    var cards = data.json();",
+							"    var card = cards[Math.floor(Math.random()*(cards.length))]",
+							"    if (card.id && card.idBoard && card.idList) return true",
+							"    else false",
+							"}"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"validate_Status200_OK = (data) => 200;",
+					"",
+					"validate_Status204_OK = (data) => 204;",
+					"",
+					"validate_Status404_OK = (data) => 404;",
+					"",
+					"validate_ContentType_Header = (data) => \"Content-Type\";"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "API_KEY",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "TOKEN",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "idBoard",
+			"value": ""
+		},
+		{
+			"key": "idList",
+			"value": ""
+		},
+		{
+			"key": "idCard",
+			"value": ""
+		},
+		{
+			"key": "idCard2",
+			"value": ""
+		},
+		{
+			"key": "newIdBoard",
+			"value": ""
+		},
+		{
+			"key": "IdListProces",
+			"value": "647b3287b0c2aa80644459e5"
+		},
+		{
+			"key": "listaDeBoards",
+			"value": ""
+		},
+		{
+			"key": "newBoard",
+			"value": ""
+		},
+		{
+			"key": "idLabel",
+			"value": ""
+		},
+		{
+			"key": "IdListDone",
+			"value": "647b3287b0c2aa80644459e6"
+		}
+	]
+}
