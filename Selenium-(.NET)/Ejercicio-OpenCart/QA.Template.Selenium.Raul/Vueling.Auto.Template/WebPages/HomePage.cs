@@ -35,6 +35,10 @@ namespace OpenCart.Auto.Template.Webpages
         protected override IWebElement ApartadosBusqueda => throw new System.NotImplementedException();
         //private IWebElement BuscarButton => throw new System.NotImplementedException();
 
+        private IWebElement RightCarousel => WebDriver.FindElementByXPath("//*[@id='content']/div[3]/div[3]/div[1]");
+        private IWebElement LightCarousel => WebDriver.FindElementByXPath("//*[@id='content']/div[3]/div[3]/div[2]");
+        private IWebElement NameSponsor (string name) => WebDriver.FindElementByXPath($"//img[contains(@alt,'{name}')]");
+        private IWebElement Sponsor(int num, string name) => WebDriver.FindElementByXPath($"//div[@data-swiper-slide-index='{num}']/img[contains(@alt,{name})]");
 
         //Define functions and actions 
 
@@ -82,6 +86,20 @@ namespace OpenCart.Auto.Template.Webpages
         public HomePage ValidateStayAtHome()
         {
             Assert.AreEqual("Featured", MessageHome.Text);
+            return this;
+        }
+
+        
+        public HomePage Sponsors(int num, string name)
+        {
+            for (int i = 0; i < 11; i++)
+            {
+                if (Sponsor(i,name).GetAttribute("alt") == name)
+                {
+                    Assert.AreEqual(name, NameSponsor(name).GetAttribute("alt"));
+                }
+            }
+            
             return this;
         }
     }

@@ -68,12 +68,14 @@ namespace OpenCart.Auto.Template.Webpages
 
         public PaymentPage DeliveryDetails()
         {
+            WebDriverWait wait = new WebDriverWait(WebDriver, TimeSpan.FromSeconds(40));
             BtnContinue1.Click();
             return this;
         }
 
         public PaymentPage DeliveryMethod()
         {
+            WebDriverWait wait = new WebDriverWait(WebDriver, TimeSpan.FromSeconds(40));
             BtnContinue2.Click();
             return this;
         }

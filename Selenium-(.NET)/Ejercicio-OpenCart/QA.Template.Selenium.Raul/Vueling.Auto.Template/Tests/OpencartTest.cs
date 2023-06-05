@@ -133,6 +133,9 @@ namespace Proyecto.Auto.Template.Tests
         [TestCase]
         public void CheckSponsor()
         {
+            homePage = new HomePage(setUpWebDriver);
+
+            homePage.Sponsors(10, "Nintendo");                      //ASSERT
 
         }
 
