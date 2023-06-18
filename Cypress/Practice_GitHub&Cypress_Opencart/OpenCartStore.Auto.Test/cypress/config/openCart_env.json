@@ -1,0 +1,6 @@
+{
+  "baseUrl": "https://opencart.abstracta.us/",
+  "env": {
+    "timeOutTime": "30000"
+  }
+}

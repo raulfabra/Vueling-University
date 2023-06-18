@@ -1,0 +1,7 @@
+{
+    "baseUrl": "https://skysales-bilbo.vueling.com/",
+	"env": {
+		"usersEmail": "eric.romero@col.vueling.com",
+		"recordLocatorsList": "PNR-GENERATOR-PRE.postman_environment.json"
+    }
+}
